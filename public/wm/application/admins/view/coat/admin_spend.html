@@ -1,0 +1,115 @@
+{include file="public/header"}
+
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>会员管理</cite></a>
+              <a><cite>会员列表</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+        </div>
+        <div class="x-body">
+            <form class="layui-form x-center" action="admin_spend.html" method="get" style="width:1000px">
+                <div class="layui-form-pane" style="margin-top: 15px;">
+                  <div class="layui-form-item">
+                    <div class="layui-input-inline">
+                      <input type="text" name="uid"  placeholder="请输入代理id" autocomplete="off" class="layui-input">
+                    </div>
+                    <label class="layui-form-label">日期范围</label>
+                    <div class="layui-input-inline">
+                      <input class="layui-input" placeholder="开始日" name="start_time" id="start">
+                    </div>
+                    <div class="layui-input-inline">
+                      <input class="layui-input" placeholder="截止日" name="end_time" id="end">
+                    </div>
+                    <div class="layui-input-inline" style="width:80px">
+                        <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                    </div>
+                  </div>
+                </div> 
+            </form>
+            <script src="/static/admins/laydate/laydate.js" charset="utf-8"></script>
+            <script type="text/javascript">
+              laydate.render({
+                elem: '#start'
+                ,type: 'datetime'
+              });
+               laydate.render({
+                elem: '#end'
+                ,type: 'datetime'
+              });
+            </script>
+            <xblock><span class="x-right" style="line-height:40px"></span></xblock>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>代理ID</th>
+                        <th>代理账号</th>
+                        <th>投注总额</th>
+                        <th>反水比例</th>
+                        <th>类型</th>
+                        <th>反水额</th>
+                        <th>代理余额</th>
+                        <th>创建时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {foreach $list as $k=>$v }
+                    <tr>
+                        <td>{$v['aid']}</td>
+                        <td>{$v['admin_phone']}</td>
+                        <td>{$v['admin_bet']}</td>
+                        <td>{$v['admin_reb']}</td>
+                        <td>{$v['water_status']==2?"反水":"充值"}</td>
+                        <td>{$v['points']}</td>
+                        <td>{$v['admin_moneys']}</td>
+                        <td>{:date("Y-m-d H:i",$v['addtime'])}</td>
+                       <!--  <td class="td-manage">
+                                <input type="hidden" id="aid" name="" value="{$v['point_id']}">
+                                <span class="layui-btn layui-btn-normal3 layui-btn-mini del" style="background-color: red">
+                                 删除
+                               </span>
+                        </td> -->
+                    </tr>
+               {/foreach}
+                </tbody>
+            </table>
+   
+            <div id="page" style="text-align: center"> {$list->render()}</div>
+        </div>
+
+
+      <!--  <script type="text/javascript">
+         
+
+           $(".del").each(function(){
+                $(this).click(function(){
+        
+                var aid=$(this).parent().find("#aid").val();
+                // alert(aid);
+                layer.msg('你确定要删除这条记录吗？',{
+                     time: 0 //不自动关闭,
+                     ,btn: ['确定', '取消']
+                     ,yes: function(index){
+                          layer.close(index);
+                          $.ajax({
+                            url:"{:url('water_del')}",
+                            data:{'aid':aid},
+                            success:function(res){
+                                if(res=="ok"){
+                                    layer.msg("删除成功",function(){
+                                      location.href="{:url('/water/water_list')}";
+                                    });
+                                }else{
+                                    layer.msg("删除失败",{icon:2});
+                                }
+                            }
+                          })
+                     }
+                })
+                });
+            });
+       </script> -->
+    </body>
+</html>

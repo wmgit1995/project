@@ -1,0 +1,157 @@
+
+{include file="public/header"}
+{include file="public/page"}
+<body>
+<div class="x-nav">
+
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <form class="layui-form x-center" action="index.html" style="width:800px" id="form2" method="get">
+        <div class="layui-form-pane" style="margin-top: 15px;">
+            <div class="layui-form-item">
+                <div class="layui-input-inline" style="text-align:right;padding-left:63%">
+                    <input type="text" name="name" id="name" placeholder="请输入等级名称" autocomplete="off" class="layui-input" value="{$name}">
+                </div>
+                <div class="layui-input-inline" style="width:80px">
+                    <button class="layui-btn"  id="search" lay-submit="" lay-filter="sreach"><i class="layui-icon" >&#xe615;</i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <xblock>
+
+      <button class="layui-btn" onclick="level_add('添加会员等级','level_save.html','600','500')"> <i class="layui-icon">&#xe608;</i>添加会员等级</button>
+
+    </xblock>
+
+
+    <table class="layui-table">
+        <thead>
+        <tr>
+
+            <th>
+                ID
+            </th>
+
+            <th>
+                等级名称
+            </th>
+            <th>
+                团队达标
+            </th>
+            <th>
+                前排达标
+            </th>
+            <th>
+                静态金额
+            </th>
+            <th>
+                静态收益
+            </th>
+            <th>
+                动态收益
+            </th>
+            <th>
+                收益代数
+            </th>
+            <th>
+                信用押金
+            </th>
+            <th>
+                最大排队数
+            </th>
+            <th>
+                操作
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $lists as $k=>$vo}
+        <tr>
+
+            <td>
+                {$vo['id']}
+            </td>
+            <td>
+                {$vo['name']}
+            </td>
+            <td >
+                {$vo['team_num']}
+            </td>
+            <td>{$vo['front']}个{$list[$vo.front_id]}</td>
+            <td>{$vo['static']}</td>
+            <td>{$vo['static_scale']}</td>
+            <td>{$vo['moving_scale']}</td>
+            <td>{$vo['moving_generation']}</td>
+            <td>{$vo['credit_deposit']}</td>
+            <td>{$vo['queue_num']}</td>
+
+              <td class="td-manage">
+
+                  <a title="编辑" href="javascript:;" editId="{$vo.id}" onclick="level_edit('编辑','level_save.html?id={$vo.id}','4','','510')"
+                  class="ml-5" style="text-decoration:none">
+                      <i class="layui-icon">&#xe642;</i>
+                  </a>
+                  <a title="删除" href="javascript:;" attr="{$vo.id}" onclick="level_del(this)"
+                  style="text-decoration:none">
+                      <i class="layui-icon">&#xe640;</i>
+                  </a>
+              </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    <div id="page" style="display:none"></div>
+    <div style="text-align:center;">{$lists->render()}</div>
+</div>
+
+
+ {include file="public/footercom"}
+ <script>
+
+
+      /*-添加*/
+     function level_add(title,url,w,h){
+         x_admin_show(title,url,w,h);
+     }
+
+
+
+     // -编辑
+     function level_edit (title,url,id,w,h) {
+         // var id=$(this).attr('editId');
+         x_admin_show(title,url,w,h);
+     }
+     </script>
+
+
+ <script>
+     function level_del(obj){
+       var id = obj.getAttribute('attr');
+       // alert(user_id);
+       layer.msg('你确定要删除吗？',{
+            time: 0 //不自动关闭,
+            ,btn: ['确定', '取消']
+            ,yes: function(index){
+                 layer.close(index);
+                 $.ajax({
+                   url:"{:url('level/level_del')}",
+                   data:{"id":id},
+                   success:function(data){
+                       if(data.status==1){
+                           layer.msg("删除成功", function(){
+                               location.href="{:url('/admins/level/index')}";
+                           });
+                       }else{
+                           layer.msg(data.msg,{icon:2});
+                       }
+                   }
+                 })
+            }
+       })
+     }
+
+ </script>
+</body>
+</html>

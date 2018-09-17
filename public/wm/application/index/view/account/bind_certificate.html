@@ -1,0 +1,149 @@
+{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/shimingrenzheng-band.css">
+
+    <style>
+        input{
+            background: white;
+        }
+        a:hover{
+          text-decoration: none;
+        }
+    </style>
+
+<body style="background:#EFEFEF">
+<div class="contain"  style="height:520px;">
+    <!--头部-->
+    {include file="public/top_menu"}
+    <!--头部-->
+    <!--加空白-->
+    <div style=" height: 70px;width: 100%">
+    </div>
+    <!--加空白-->
+    <div class="row">
+    </div>
+    <form action=""  method=" "   class="form-horizontal">
+        <!--实名认证-->
+      <!--  <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="anzhi" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0;background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 text-left  col-xs-offset-1" style="padding-left: 0">实名认证</span>
+            </label>
+            <input type="text" placeholder=""  class="col-xs-10" id="anzhi" >
+        </div>-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="renzheng" class="col-xs-2 anzhi-label   text-center" style="padding-left:0;padding-right:0;background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 text-left  col-xs-offset-1" style="padding-left: 0">实名认证</span>
+            </label>
+            <input type="text" value=""  class="col-xs-10" id="renzheng">
+        </div>
+        <!--实名认证-->
+        <!--账号-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="zhangH" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0;background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 text-left  col-xs-offset-1" style="padding-left: 0">账号</span>
+            </label>
+            <input type="text" value="bbc"  class="col-xs-10" id="zhangH" disabled style="color: black" >
+        </div>
+        <!--账号-->
+        <!--ID-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="id-word" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0;background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 text-left  col-xs-offset-1" style="padding-left: 0">ID</span>
+            </label>
+            <input type="text" value="123456"  class="col-xs-10" id="id-word" disabled style="color: black">
+        </div>
+        <!--ID-->
+        <!--姓名-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="xingMing" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0;background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 text-left  col-xs-offset-1" style="padding-left: 0">姓名</span>
+            </label>
+            <input type="text" value="叶赫那拉氏"  class="col-xs-10" id="xingMing" disabled style="color: black">
+        </div>
+        <!--姓名-->
+        <!--身份证号码-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="shenFen" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0;background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 text-left  col-xs-offset-1" style="padding-left: 0">身份证号码</span>
+            </label>
+            <input type="text" value="3391384214546"  class="col-xs-10" id="shenFen" disabled style="color: black">
+        </div>
+        <!--身份证号码-->
+        <!--绑定钱包地址-->
+        <button type="submit" class="btn btn-block" style="color: white;outline: white;border: none">已绑定身份证</button>
+        <!--绑定钱包地址-->
+        <!--文字-->
+        <div class="row">
+            <p class="col-xs-12 text-center footer-p">钱包地址一经绑定后不可修改，若有问题请联系客服或咨询留言</p>
+        </div>
+        <!--文字-->
+    </form>
+    <!--验证-->
+    <script>
+        $(document).ready(function(){
+            //为表单的必填文本框添加提示信息（选择form中的所有后代input元素）
+            $("form :input.required").each(function(){
+                //创建元素
+                var $required = $("<strong class='high'>*</strong>");
+                //将它追加到文档中
+                $(this).parent().append($required);
+            });
+            //为表单的必填文本框添加相关事件（blur、focus、keyup）
+            $("form :input").blur(function(){
+                //注意：这里的this是DOM对象，$(this)才是jQuery对象
+                var $parent = $(this).parent();
+                //删除之前的错误提醒信息
+                $parent.find(".msg").remove();
+                //验证“名称”
+                if($(this).is("#name")){
+                    //运用jQuery中的$.trim()方法，去掉首位空格
+                    if($.trim(this.value) == "" || $.trim(this.value).length < 6){
+                        var errorMsg = " 请输入至少6位的名称！";
+                        //class='msg onError' 中间的空格是层叠样式的格式
+                        $parent.append("<span class='msg onError'>" + errorMsg + "</span>");
+                    }
+                    else{
+                        var okMsg=" 输入正确";
+                        $parent.find(".high").remove();
+                        $parent.append("<span class='msg onSuccess'>" + okMsg + "</span>");
+                    }
+                }
+                //验证邮箱
+                if($(this).is("#email")){
+                    if($.trim(this.value) == "" || ($.trim(this.value) != "" && !/.+@.+\.[a-zA-Z]{2,4}$/.test($.trim(this.value)))){
+                        var errorMsg = "请输入正确的E-Mail地址！";
+                        $parent.append("<span class='msg onError'>" + errorMsg + "</span>");
+                    }
+                    else{
+                        var okMsg=" 输入正确";
+                        $parent.find(".high").remove();
+                        $parent.append("<span class='msg onSuccess'>" + okMsg + "</span>");
+                    }
+                }
+            }).keyup(function(){
+                //triggerHandler 防止事件执行完后，浏览器自动为标签获得焦点
+                $(this).triggerHandler("blur");
+            }).focus(function(){
+                $(this).triggerHandler("blur");
+            });
+            //点击重置按钮时，触发文本框的失去焦点事件
+            $("#send").click(function(){
+                //trigger 事件执行完后，浏览器会为submit按钮获得焦点
+                $("form .required:input").trigger("blur");
+                var numError = $("form .onError").length;
+                if(numError){
+                    return false;
+                }
+                alert("注册成功，密码已发到你的邮箱");
+            });
+        });
+    </script>
+    <!--验证-->
+    {include file="public/footer"}
+<script>
+    $("#gongneng").click(function () {
+        $("#zhezhao").css("display","block")
+    })
+    $(".navH").click(function () {
+        $("#zhezhao").css("display","none")
+    })
+</script>

@@ -1,0 +1,215 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/*.row{
+    border: 1px solid #000;
+}
+[class*=col-]{
+    border: 1px solid #000;
+}*/
+.contain{
+    /*   border: 1px solid #000;*/
+    /* min-width: 600px;*/
+}
+.daohang-lianxi{
+    height:4.375rem ;
+    background: #ccc;
+    /* min-width: 600px;*/
+}
+.jiaoyi-kuang{
+    height:31.25rem;
+    /*   border: 1px solid pink;*/
+    background: url("../img/tu.png")no-repeat;
+    background-size: 100% 100%;
+}
+.word-1{
+    font-size: 1.9rem;
+    font-weight: bold;
+}
+/*添加*/
+/*遮罩层样式*/
+#open {
+    /*显示菜单样式*/
+    width: 160px;
+    height: 100%;
+    /* background-color: #363a45; */
+    background: url(../img/blue.png) no-repeat;
+    padding-bottom: 0.1rem;
+    box-sizing: border-box;
+    /*margin-left: -2000px;*/
+    z-index: 9999999999999;
+    /*position: absolute;*/
+    -webkit-transition: all 0.8s ease;
+    -moz-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+    -ms-transition: all 0.8s ease;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.8);
+    z-index: 99999999;
+
+}
+#open .navH {
+    height: 45px;
+    /* background-color: #44495a; */
+    /* line-height: 0.6rem; */
+    text-align: center;
+    /* font-size: 0.2rem; */
+    color: #fff;
+    position: relative;
+    box-sizing: border-box;
+    width: 239px;
+    background: url(../img/blue.png) no-repeat;
+}
+.navH span {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding: 0 5px;
+    cursor: pointer;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    display: inline-block;
+}
+.navH span .obscure {
+    width:50px;
+    height: 50px;
+    margin-left:18%;
+}
+.navBox {
+    height: 100%;
+    overflow-y: auto;
+    width: 198px;
+    background: url(../img/blue.png) no-repeat;
+
+}
+.navBox ul li {
+    /*  background-color: #393c4a;*/
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+.navBox ul li .obtain {
+    /*	background-color: #3889D4; */
+}
+.navBox ul li .obtain:hover {
+    /*	background-color: #3D8332; */
+}
+.obtain {
+    position: relative;
+    width: 90%;
+    height: 100%;
+    margin-left: 15px;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 0;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    -ms-transition: all 0.6s ease;
+    border-bottom: 1px solid;
+}
+.right {
+    position: absolute;
+    top: 50%;
+    right: 0.15rem;
+    border-top: 0.07rem transparent dashed;
+    /* border-left: 0.07rem solid #fff;*/
+    border-right: 0.07rem transparent dashed;
+    border-bottom: 0.07rem transparent dashed;
+    display: inline-block;
+    -webkit-transition: -webkit-transform 0.6s ease;
+    -moz-transition: -moz-transform 0.6s ease;
+    -o-transition: -o-transform 0.6s ease;
+    -ms-transition: -ms-transform 0.6s ease;
+    transform-origin: 4px 3px;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+.arrowRot {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.secondary {
+    overflow: hidden;
+    height: 0;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    -ms-transition: all 0.6s ease;
+}
+.secondary h3 {
+    padding: 0.1rem 0;
+    text-align: center;
+    font-size: 0.13rem;
+    background-color: #282c3a;
+    color: #ffffff;
+    border-bottom: 0.8px solid #42495d;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+}
+.navBox ul li .secondary h3:hover {
+    background-color: #1acbfc;
+}
+.navBox ul li .secondary .seconFocus {
+    background-color: #1acbfc;
+    -webkit-box-shadow: 3px 3px 3px #aa8c51;
+    -moz-box-shadow: 3px 3px 3px #aa8c51;
+    box-shadow: 3px 3px 3px #aa8c51;
+}
+/*遮罩层样式*/
+
+.right{
+    width: 22px;
+    float: right;
+    padding-top: 3px;
+}
+#zhezhao{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index:100000000000000;
+}
+.menu_logo{
+    margin-left: 57px;
+    width: 85px;
+}
+.VIP{
+    margin-left: 66px;
+    width: 35px;
+    float: left;
+}
+.vip{
+
+    padding: 3px;
+}
+.menu_num{
+    font-size: 41px;
+    height: 20px;
+    color: white;
+    margin-top: -9px;
+
+}
+.one{
+    height: 70px;
+    background-color: black;
+}
+/*添加*/
+@media screen and (max-width: 736px) {.jiaoyi-kuang{
+  height: 21.25rem;
+}}
+
+

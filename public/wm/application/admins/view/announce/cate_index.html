@@ -1,0 +1,105 @@
+<?php use think\Db; ?>
+{include file="public/header"}
+{include file="public/page"}
+
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>会员管理</cite></a>
+              <a><cite>会员列表</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+        </div>
+        <div class="x-body">
+            <form class="layui-form x-center" action="cate_index.html" id="form2" method="get">
+                <div class="layui-form-pane" style="margin-top: 15px;">
+                  <div class="layui-form-item">
+                    <div class="layui-input-inline" style="text-align:right;width:20%">
+                      <input type="text" name="title" id="title" placeholder="请需要搜索的公告分类名称" autocomplete="off" class="layui-input" value='{$title ? $title : ''}'>
+                    </div>
+                    <div class="layui-input-inline" style="width:80px">
+                        <button class="layui-btn"  id="search" lay-submit="" lay-filter="sreach"><i class="layui-icon"  onclick=searchuser();>&#xe615;</i></button>
+                    </div>
+                  </div>
+                </div>
+            </form>
+            <xblock>
+                <button class="layui-btn" onclick="javascript:window.location.href='{:url('cate_add')}'"> <i class="layui-icon">&#xe608;</i>添加公告分类</button>
+            </xblock>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>
+                            公告ID
+                        </th>
+                        <th>
+                            公告分类名称
+                        </th>
+                        <th>
+                            公告分类内容
+                        </th>
+                        <!-- <th>
+                            状态
+                        </th> -->
+                        <th>
+                            创建时间
+                        </th>
+                        <th style="text-align: center">
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach $lists as $k=>$vo}
+                    <?php 
+                        // 查询是否有子类分类
+                        $sResult = Db::table('hz_announce_cate')->where('parent_id', $vo['id'])->find();
+                        $isHaveSub = is_array($sResult) && count($sResult) > 0 ? 1 : 0;
+                    ?>
+                    <tr {$vo['status'] > 0 ? '' : "style='color:#ccc'"}>
+                        <td>
+                            {$vo['id']}
+                        </td>
+                        <td>
+                            {$vo['cate_name']}
+                        </td>
+                        <td>
+                            {$vo['cate_desc']}
+                        </td>
+                       <!--  <td >
+                            {$vo['status'] > 0 ? '启用中' : '<span style="color:#ccc">禁用中</span>'}
+                        </td> -->
+                        <td>
+                            {$vo['create_time']}
+                        </td>
+                        <td class="td-manage" style='text-align:center'>
+                            <input type="hidden" id="cateId" name="" value="{$vo['id']}">
+                            <input type="hidden" class="status" name="" value="{$vo['status']}">
+                                {if $isHaveSub}
+                                <span id="rate" class="layui-btn layui-btn-mini rate" onclick="javascript:window.location.href='{:url('cate_sub_index', ['parent_id' => $vo['id']])}'">
+                                  查看下级
+                               </span>
+                               {/if}
+                                <span id="rate" class="layui-btn layui-btn-mini rate" onclick="javascript:window.location.href='{:url('cate_add', ['parent_id' => $vo['id']])}'">
+                                  添加下级
+                               </span>
+                               <!-- <span id="rate" class="layui-btn layui-btn-mini rate"> -->
+                                  <!-- {$vo['status'] == 1 ? "禁用" : "启用"} -->
+                               <!-- </span> -->
+                               <span id="rate" class="layui-btn layui-btn-mini rate" onclick="javascript:window.location.href='{:url('cate_add', ['id' => $vo['id']])}'">
+                                  编辑
+                               </span>
+                                <span class="layui-btn layui-btn-normal3 layui-btn-mini del" style="background-color: red" onclick="javascript:if(confirm('您确实要执行该操作吗?')){location='{:url('cateIsDelete', ['id' => $vo['id']])}'}">
+                                 删除
+                               </span>
+                        </td>
+                    </tr>
+                    {/foreach}
+                </tbody>
+            </table>
+            <div id="page" style="display:none"></div>
+            <div style="text-align:center;">{$lists->render()}</div>
+        </div>
+    </body>
+</html>

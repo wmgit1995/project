@@ -1,0 +1,532 @@
+<div class="layui-side layui-bg-black x-side">
+    <div class="layui-side-scroll">
+        <ul class="layui-nav layui-nav-tree site-demo-nav" lay-filter="side">
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;" _href="{:url('/admins/index/welcome')}">
+                    <i class="layui-icon" style="top: 3px;">&#xe629;</i><cite>首页</cite>
+                </a>
+              <!--   <dl class="layui-nav-child">
+                    <dd class="">
+                        <dd class="">
+                            <a href="javascript:;" _href="{:url('stop/stop_list')}">
+                                <cite></cite>
+                            </a>
+                        </dd>
+                    </dd>
+
+                </dl> -->
+            </li>
+            <!--<li class="layui-nav-item">-->
+                <!--<a class="javascript:;" href="javascript:;">-->
+                    <!--<i class="layui-icon" style="top: 3px;">&#xe62d;</i><cite>代理管理</cite>-->
+                <!--</a>-->
+                <!--<dl class="layui-nav-child">-->
+                    <!--<dd class="">-->
+                        <!--<dd class="">-->
+                            <!--<a href="javascript:;" _href="{:url('agent/index')}">-->
+                                <!--<cite>代理列表</cite>-->
+                            <!--</a>-->
+                        <!--</dd>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<dd class="">-->
+                            <!--<a href="javascript:;" _href="{:url('agent/agent_add')}">-->
+                                <!--<cite>添加代理</cite>-->
+                            <!--</a>-->
+                        <!--</dd>-->
+                    <!--</dd>-->
+                <!--</dl>-->
+            <!--</li>-->
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">
+                    <i class="layui-icon" style="top: 3px;">&#xe634;</i><cite>会员管理</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                        <dd class="">
+                            <a href="javascript:;" _href="{:url('user/index')}">
+                                <cite>会员列表</cite>
+                            </a>
+                        </dd>
+                    </dd>
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('user/member_add')}">
+                            <cite>添加会员</cite>
+                        </a>
+                    </dd>
+                    </dd>
+
+
+                </dl>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('level/index')}">
+                            <cite>会员等级列表</cite>
+                        </a>
+                    </dd>
+                    </dd>
+
+                </dl>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('tree/index')}">
+                            <cite>会员结构图</cite>
+                        </a>
+                    </dd>
+                    </dd>
+
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">
+                    <i class="layui-icon" style="top: 3px;">&#xe634;</i><cite>公告管理</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                        <dd class="">
+                            <a href="javascript:;" _href="{:url('announce/index')}">
+                                <cite>公告列表</cite>
+                            </a>
+                        </dd>
+                    </dd>
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('announce/add')}">
+                            <cite>添加公告</cite>
+                        </a>
+                    </dd>
+                    </dd>
+                </dl>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                        <dd class="">
+                            <a href="javascript:;" _href="{:url('announce/cate_index')}">
+                                <cite>公告分类列表</cite>
+                            </a>
+                        </dd>
+                    </dd>
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('announce/cate_add')}">
+                            <cite>添加公告分类</cite>
+                        </a>
+                    </dd>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">
+                    <i class="layui-icon" style="top: 3px;">&#xe634;</i><cite>互助管理</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('formation/index')}">
+                            <cite>排单列表</cite>
+                        </a>
+                    </dd>
+                    </dd>
+
+
+                </dl>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('formation/order')}">
+                            <cite>订单列表</cite>
+                        </a>
+                    </dd>
+                    </dd>
+
+                </dl>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('formation/apply')}">
+                            <cite>退出申请列表</cite>
+                        </a>
+                    </dd>
+                    </dd>
+
+                </dl>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('formation/ticket')}">
+                            <cite>门票管理</cite>
+                        </a>
+                    </dd>
+                    </dd>
+
+                </dl>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('formation/credit_seed')}">
+                            <cite>信用种子管理</cite>
+                        </a>
+                    </dd>
+                    </dd>
+
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">
+                    <i class="layui-icon" style="top: 3px;">&#xe634;</i><cite>资金管理</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('Fund/index')}">
+                            <cite>收益列表</cite>
+                        </a>
+                    </dd>
+                    </dd>
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('Fund/total')}">
+                            <cite>收益统计</cite>
+                        </a>
+                    </dd>
+                    </dd>
+
+
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">
+                    <i class="layui-icon" style="top: 3px;">&#xe634;</i><cite>留言管理</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('msg/index',['type'=>1])}">
+                            <cite>未回复列表</cite>
+                        </a>
+                    </dd>
+                    </dd>
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('msg/index',['type'=>2])}">
+                            <cite>已回复列表</cite>
+                        </a>
+                    </dd>
+                    </dd>
+
+
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">
+                    <i class="layui-icon" style="top: 3px;">&#xe634;</i><cite>系统设置</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('setting/match')}">
+                            <cite>系统设置</cite>
+                        </a>
+                    </dd>
+
+                </dl>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('setting/banner')}">
+                            <cite>轮播图管理</cite>
+                        </a>
+                    </dd>
+
+                </dl>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                    <dd class="">
+                        <a href="javascript:;" _href="{:url('setting/backuplist')}">
+                            <cite>数据备份管理</cite>
+                        </a>
+                    </dd>
+
+                </dl>
+            </li>
+            <!--<li class="layui-nav-item">-->
+                <!--<a class="javascript:;" href="javascript:;">-->
+                    <!--<i class="layui-icon" style="top: 3px;">&#xe23634;</i><cite>彩票管理</cite>-->
+                <!--</a>-->
+                <!--<dl class="layui-nav-child">-->
+                    <!--<dd class="">-->
+                        <!--<dd class="">-->
+                            <!--<a href="javascript:;" _href="{:url('lottery/lottery_add')}">-->
+                                <!--<cite>添加开奖号码</cite>-->
+                            <!--</a>-->
+                        <!--</dd>-->
+                    <!--</dd>-->
+                <!--</dl>-->
+                <!--&lt;!&ndash; <dl class="layui-nav-child">-->
+                    <!--<dd class="">-->
+                        <!--<dd class="">-->
+                            <!--<a href="javascript:;" _href="{:url('lottery/index')}">-->
+                                <!--<cite>开奖号码列表</cite>-->
+                            <!--</a>-->
+                        <!--</dd>-->
+                    <!--</dd>-->
+
+                <!--</dl> &ndash;&gt;-->
+                <!--<dl class="layui-nav-child">-->
+                    <!--<dd class="">-->
+                        <!--<dd class="">-->
+                            <!--<a href="javascript:;" _href="{:url('lottery/lottery_edit_date',['id'=>1])}">-->
+                                <!--<cite>开奖间隔时间</cite>-->
+                            <!--</a>-->
+                        <!--</dd>-->
+                    <!--</dd>-->
+                <!--</dl>&lt;!&ndash;-->
+                <!--<dl class="layui-nav-child">-->
+                    <!--<dd class="">-->
+                        <!--<dd class="">-->
+                            <!--<a href="javascript:;" _href="{:url('lottery/notice')}">-->
+                                <!--<cite>开奖通知</cite>-->
+                            <!--</a>-->
+                        <!--</dd>-->
+                    <!--</dd>-->
+                <!--</dl> &ndash;&gt;-->
+            <!--</li>-->
+            <!--<li class="layui-nav-item">-->
+                <!--<a class="javascript:;" href="javascript:;">-->
+                    <!--<i class="layui-icon" style="top: 3px;">&#xe642;</i><cite>充值管理</cite>-->
+                <!--</a>-->
+                <!--<dl class="layui-nav-child">-->
+                    <!--<dd class="">-->
+                        <!--<dd class="">-->
+                            <!--<a href="javascript:;" _href="{:url('recharge/points_add')}">-->
+                                <!--<cite>彩分充值</cite>-->
+                            <!--</a>-->
+                        <!--</dd>-->
+                    <!--</dd>-->
+                     <!--<dd class="">-->
+                        <!--<dd class="">-->
+                            <!--<a href="javascript:;" _href="{:url('recharge/points_list')}">-->
+                                <!--<cite>代理彩分充值记录</cite>-->
+                            <!--</a>-->
+                        <!--</dd>-->
+                    <!--</dd>-->
+                <!--</dl>-->
+            <!--</li>-->
+            <!--<li class="layui-nav-item">-->
+                <!--<a class="javascript:;" href="javascript:;">-->
+                    <!--<i class="layui-icon" style="top: 3px;">&#xe630;</i><cite>资金管理</cite>-->
+                <!--</a>-->
+                <!--<dl class="layui-nav-child">-->
+                    <!--<dd class="">-->
+                        <!--<dd class="">-->
+                             <!--<a href="javascript:;" _href="{:url('water/water_list')}">-->
+                            <!--<cite>代理彩分流水</cite>-->
+                              <!--</a>-->
+                        <!--</dd>-->
+                    <!--</dd>-->
+                     <!--<dd class="">-->
+                        <!--<dd class="">-->
+                             <!--<a href="javascript:;" _href="{:url('water/user_water')}">-->
+                            <!--<cite>会员彩分流水</cite>-->
+                             <!--</a>-->
+                        <!--</dd>-->
+                    <!--</dd>-->
+
+                <!--</dl>-->
+            <!--</li>-->
+            <!--<li class="layui-nav-item">-->
+                <!--<a class="javascript:;" href="javascript:;">-->
+                    <!--<i class="layui-icon" style="top: 3px;">&#xe606;</i><cite>反水管理</cite>-->
+                <!--</a>-->
+                <!--<dl class="layui-nav-child">-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="{:url('coat/admin_coat')}">-->
+                            <!--<cite>代理彩分反水</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="{:url('coat/user_coat')}">-->
+                            <!--<cite>会员彩分反水</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                     <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="{:url('coat/admin_spend')}">-->
+                            <!--<cite>代理反水支出</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="{:url('coat/user_spend')}">-->
+                            <!--<cite>会员反水支出</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                <!--</dl>-->
+            <!--</li>-->
+ <!--&lt;!&ndash;            <li class="layui-nav-item">-->
+                <!--<a class="javascript:;" href="javascript:;">-->
+                    <!--<i class="layui-icon" style="top: 3px;">&#xe612;</i><cite>会员管理</cite>-->
+                <!--</a>-->
+                <!--<dl class="layui-nav-child">-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="member-list.html">-->
+                            <!--<cite>会员列表</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./member-del.html">-->
+                            <!--<cite>删除会员</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./member-level.html">-->
+                            <!--<cite>等级管理</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./member-kiss.html">-->
+                            <!--<cite>积分管理</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./member-view.html">-->
+                            <!--<cite>浏览记录</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./member-view.html">-->
+                            <!--<cite>分享记录</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                <!--</dl>-->
+            <!--</li> &ndash;&gt;-->
+            <!--<li class="layui-nav-item">-->
+                <!--<a class="javascript:;" href="javascript:;">-->
+                    <!--<i class="layui-icon" style="top: 3px;">&#xe613;</i><cite>投注管理</cite>-->
+                <!--</a>-->
+                <!--<dl class="layui-nav-child">-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="{:url('ceil/ceil_edit')}">-->
+                            <!--<cite>下注上限设置</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="{:url('notice/notice_edit')}">-->
+                            <!--<cite>公告赔率</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="{:url('pics/pic_edit')}">-->
+                            <!--<cite>本期主图</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="{:url('users/users_list')}">-->
+                            <!--<cite>会员投注汇总</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="{:url('play/play_list')}">-->
+                            <!--<cite>会员投注信息</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="{:url('Open/prize_list')}">-->
+                            <!--<cite>开奖记录</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                <!--</dl>-->
+            <!--</li>-->
+<!--&lt;!&ndash;             <li class="layui-nav-item">-->
+                <!--<a class="javascript:;" href="javascript:;">-->
+                    <!--<i class="layui-icon" style="top: 3px;">&#xe629;</i><cite>系统统计</cite>-->
+                <!--</a>-->
+                <!--<dl class="layui-nav-child">-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./echarts1.html">-->
+                            <!--<cite>拆线图</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./echarts2.html">-->
+                            <!--<cite>柱状图</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./echarts3.html">-->
+                            <!--<cite>地图</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./echarts4.html">-->
+                            <!--<cite>饼图</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./echarts5.html">-->
+                            <!--<cite>雷达图</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./echarts6.html">-->
+                            <!--<cite>k线图</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./echarts7.html">-->
+                            <!--<cite>热力图</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="javascript:;" _href="./echarts8.html">-->
+                            <!--<cite>仪表图</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                    <!--<dd class="">-->
+                        <!--<a href="http://echarts.baidu.com/examples.html" target="_blank" _href="./welcome.html">-->
+                            <!--<cite>更多案例</cite>-->
+                        <!--</a>-->
+                    <!--</dd>-->
+                <!--</dl>-->
+            <!--</li> &ndash;&gt;-->
+<!--             <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">
+                    <i class="layui-icon" style="top: 3px;">&#xe614;</i><cite>系统设置</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                        <a href="javascript:;" _href="./sys-set.html">
+                            <cite>系统设置</cite>
+                        </a>
+                    </dd>
+                    <dd class="">
+                        <a href="javascript:;" _href="./sys-data.html">
+                            <cite>数字字典</cite>
+                        </a>
+                    </dd>
+                    <dd class="">
+                        <a href="javascript:;" _href="./sys-shield.html">
+                            <cite>屏蔽词</cite>
+                        </a>
+                    </dd>
+                    <dd class="">
+                        <a href="javascript:;" _href="./sys-log.html">
+                            <cite>系统日志</cite>
+                        </a>
+                    </dd>
+                    <dd class="">
+                        <a href="javascript:;" _href="./sys-link.html">
+                            <cite>友情链接</cite>
+                        </a>
+                    </dd>
+                    <dd class="">
+                        <a href="javascript:;" _href="./sys-qq.html">
+                            <cite>第三方登录</cite>
+                        </a>
+                    </dd>
+                </dl>
+            </li> -->
+        </ul>
+    </div>
+
+</div>

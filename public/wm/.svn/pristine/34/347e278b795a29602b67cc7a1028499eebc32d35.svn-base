@@ -1,0 +1,120 @@
+
+
+{include file="public/header"}
+{include file="public/page"}
+<body>
+<div class="x-nav">
+
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <form class="layui-form x-center" action="index.html" style="width:800px" id="form2" method="get">
+        <div class="layui-form-pane" style="margin-top: 15px;">
+            <div class="layui-form-item">
+                <div class="layui-input-inline" style="text-align:right;padding-left:63%">
+                    <input type="text" name="title" id="name" placeholder="请输入用户id或者用户名" autocomplete="off" class="layui-input" value="{$title}">
+                </div>
+                <div class="layui-input-inline" style="width:80px">
+                    <button class="layui-btn"  id="search" lay-submit="" lay-filter="sreach"><i class="layui-icon"  >&#xe615;</i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+    <table class="layui-table">
+        <thead>
+        <tr>
+
+            <th>
+                ID
+            </th>
+
+            <th>
+                用户id
+            </th>
+            <th>
+                用户名
+            </th>
+            <th>
+                手机号
+            </th>
+            <th>
+                金额
+            </th>
+            <th>
+                收益百分比
+            </th>
+            <th>
+               排单周期
+            </th>
+            <th>
+                状态
+            </th>
+            <th>
+                排单日期
+            </th>
+            <th>
+                出场日期
+            </th>
+            <th>
+                操作
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $lists as $k=>$vo}
+        <tr>
+
+            <td>
+                {$vo['id']}
+            </td>
+            <td>
+                {$vo['user_id']}
+            </td>
+            <td >
+                {$vo['user_nickname']}
+            </td>
+            <td>{$vo['mobile']}</td>
+            <td>{$vo['amount']}</td>
+            <td>{$vo['income_scale']}</td>
+            <td>{$vo['cycle']}天</td>
+            <td>{$status_option[$vo['status']]}</td>
+            <td>{:date("Y-m-d H:i",$vo['add_time'])}</td>
+            <td>{notempty name="vo['end_time']"}{$vo['end_time']|date='Y-m-d H:i',###}{else/}{$status_option[$vo['status']]}{/notempty}</td>
+
+            <td class="td-manage">
+
+                <a title="匹配信息" href="javascript:;" editId="{$vo.id}" onclick="match_save('匹配信息','match_save.html?id={$vo.id}','4','','510')"
+                   class="ml-5" style="text-decoration:none">
+                    <i class="layui-icon">&#xe642;</i>
+                </a>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    <div id="page" style="display:none"></div>
+    <div style="text-align:center;">{$lists->render()}</div>
+</div>
+
+
+{include file="public/footercom"}
+<script>
+
+
+
+
+    // 指定匹配
+    function match_save (title,url,id,w,h) {
+        // var id=$(this).attr('editId');
+        x_admin_show(title,url,w,h);
+    }
+
+</script>
+
+
+
+</body>
+</html>

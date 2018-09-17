@@ -1,0 +1,88 @@
+{include file="public/header"}
+
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>会员管理</cite></a>
+              <a><cite>会员列表</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+        </div>
+        <div class="x-body">
+             <script src="/static/admins/laydate/laydate.js" charset="utf-8"></script>
+            <script type="text/javascript">
+              laydate.render({
+                elem: '#start'
+                ,type: 'datetime'
+              });
+               laydate.render({
+                elem: '#end'
+                ,type: 'datetime'
+              });
+            </script>
+          
+            <xblock><span class="x-right" style="line-height:40px"></span></xblock>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>期数</th>
+                        <th>开奖时间</th>
+                        <th>开奖号码</th>
+                        <th>末位开奖号码</th>
+                        <th>当期下注总额</th>
+                        <th>当前赔率</th>
+                        <th>公告</th>
+                        <!-- <th>操作</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                  {foreach $list as $k=>$v}
+                    <tr>
+                        <td>{$v['date']}</td>
+                        <td>{:date("Y-m-d H:i",$v['createtime'])}</td>
+                        <td>{$v['lottery_value']}</td>
+                        <td>{$res[$k]['mowei']}</td>
+                        <td>{$v['count']}</td>
+                        <td>{$v['odds']}</td>
+                        <td>{$v['notice']}</td>
+                    </tr>
+               {/foreach}
+                </tbody>
+            </table>
+   
+            <div id="page" style="text-align: center"> {$list->render()}</div>
+    
+       <!-- <script type="text/javascript">
+         
+
+           $(".del").each(function(){
+                $(this).click(function(){
+        
+                var aid=$(this).parent().find("#aid").val();
+                // alert(aid);
+                layer.msg('你确定要删除这条记录吗？',{
+                     time: 0 //不自动关闭,
+                     ,btn: ['确定', '取消']
+                     ,yes: function(index){
+                          layer.close(index);
+                          $.ajax({
+                            url:"{:url('water_del')}",
+                            data:{'aid':aid},
+                            success:function(res){
+                                if(res=="ok"){
+                                    layer.msg("删除成功",function(){
+                                      location.href="{:url('/water/water_list')}";
+                                    });
+                                }else{
+                                    layer.msg("删除失败",{icon:2});
+                                }
+                            }
+                          })
+                     }
+                })
+                });
+            });
+       </script> -->
+    </body>
+</html>

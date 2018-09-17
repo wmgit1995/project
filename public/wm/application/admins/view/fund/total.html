@@ -1,0 +1,117 @@
+
+
+{include file="public/header"}
+{include file="public/page"}
+<style>
+    .wd250{margin-bottom: 15px;width:300px;float: left}
+</style>
+<body>
+<div class="x-nav">
+
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <form class="layui-form x-center" action="total.html" style="width:800px" id="form2" method="get">
+        <div class="layui-form-pane" style="margin-top: 15px;">
+            <div class=" wd250">
+                <div class="layui-input-inline" style="text-align:right;padding-left:10%">
+                    <input type="text" name="title" id="name" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" value="{$title}">
+
+                </div>
+            </div>
+            <div class="layui-input-inline wd250" style="width:80px">
+                <button class="layui-btn"  id="search" lay-submit="" lay-filter="sreach"><i class="layui-icon"  >&#xe615;</i></button>
+            </div>
+        </div>
+
+    </form>
+
+
+
+    <table class="layui-table">
+        <thead>
+        <tr>
+
+            <th>
+                ID
+            </th>
+            <th>
+                用户名
+            </th>
+            <th>
+                用户状态
+            </th>
+            <th>
+                门票
+            </th>
+            <th>
+                有机果
+            </th>
+            <th>
+                信用押金
+            </th>
+            <th>
+                信用种子
+            </th>
+            <th>
+                用户等级
+            </th>
+            <th>
+                团队人数
+            </th>
+            <th>
+                排单完成
+            </th>
+            <th>
+                排单中
+            </th>
+            <th>
+                排单总金额
+            </th>
+            <th>
+                排单总收益
+            </th>
+            <th>
+                累计奖金
+            </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $lists as $k=>$vo}
+        <tr>
+            <td>
+                {$vo['id']}
+            </td>
+            <td>
+                {$vo['user_nickname']|default=$vo['user_login']}
+            </td>
+           <td>{eq name="vo.user_status" value="1"}正常{else/}异常{/eq}</td>
+            <td>{$vo.ticket|default=0}</td>
+            <td>{$vo.woc_num|default=0}</td>
+            <td>{$vo.credit_deposit|default=0}</td>
+            <td>{$vo.credit_seed|default=0}</td>
+            <td>{$vo.level_name}</td>
+            <td>{$vo.team_num|default=0}</td>
+            <td>{$vo.form_done|default=0}</td>
+            <td>{$vo.form_doing|default=0}</td>
+            <td>{$vo.form_total|default=0}</td>
+            <td>{$vo.form_income|default=0}</td>
+            <td>{$vo.award|default=0}</td>
+
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    <div id="page" style="display:none"></div>
+    <div style="text-align:center;">{$lists->render()}</div>
+</div>
+
+
+{include file="public/footercom"}
+
+
+
+
+</body>
+</html>

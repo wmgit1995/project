@@ -1,0 +1,168 @@
+{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/xiugaimima.css">
+
+  <style>
+    a:hover{
+      text-decoration: none;
+    }
+  </style>
+  
+<body style="background: #EFEFEF">
+<div class="contain"  style="height:550px;">
+    <!--头部-->
+    {include file="public/top_menu"}
+    <!--头部-->
+    <!--加空白-->
+    <div style=" height: 70px;width: 100%">
+    </div>
+    <!--加空白-->
+    <div class="row">
+    </div>
+    <!-- <form action="" class="form-horizontal"> -->
+        <input id='user_id' type='hidden' name='user_id' value="{$user.user_id}"/>
+        <!--原始登陆密码-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="anzhi" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0;background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0" >原始登陆密码</span>
+            </label>
+            <input type="password" placeholder="输入原始登陆密码"  class="col-xs-10" id="anzhi" name='old_login_paw'>
+        </div>
+        <!--原始登陆密码-->
+        <!--新的登陆密码-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;margin-bottom: 0;border:1px solid transparent;min-width: 24.75rem ;" >
+            <label for="anzhi-1" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0; background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0"> 新的登陆密码</span>
+            </label>
+            <input type="password" placeholder="输入新的登陆密码"  class="col-xs-10" id="anzhi-1" name='new_login_paw'>
+        </div>
+        <!--新的登陆密码-->
+        <!--确认新的登陆密码-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="zhanghao-input" class="col-xs-2 zhanghao-label text-center" style="padding-left:0;padding-right:0; background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0"> 确认登陆密码</span>
+            </label>
+            <input type="password" placeholder="确认新的登陆密码"  class="col-xs-10" id="zhanghao-input" name='confirm_login_paw'>
+        </div>
+        <!--确认新的登陆密码-->
+        <!--修改密码-->
+        <button type="submit" class="btn-1 btn btn-danger btn-block" style="" id="btn">修改登录密码</button>  
+
+        <!--修改密码-->
+        <!--输入原始交易密码-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;margin-bottom: 15px;border:1px solid transparent;min-width: 24.75rem ;" >
+            <label for="jiaoyi-1" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0; background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0"> 原始交易密码</span>
+            </label>
+            <input type="password" placeholder="输入原始交易密码"  class="col-xs-10" id="jiaoyi-1" name='old_trade_paw'>
+        </div>
+        <!--输入原始交易密码-->
+        <!--新的交易密码-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;margin-bottom: 0;border:1px solid transparent;min-width: 24.75rem ;" >
+            <label for="denglu-1" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0; background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0"> 新的交易密码</span>
+            </label>
+            <input type="password" placeholder="输入新的交易密码"  class="col-xs-10" id="denglu-1" name='new_trade_paw'>
+        </div>
+        <!--新的交易密码-->
+        <!--确认新的交易密码-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="queren-input" class="col-xs-2 zhanghao-label text-center" style="padding-left:0;padding-right:0; background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0"> 确认交易密码</span>
+            </label>
+            <input type="password"  placeholder="确认新的交易密码" class="col-xs-10" id="queren-input" name='confirm_trade_paw'>
+        </div>
+        <!--确认新的交易密码-->
+        <!--修改密码-->
+        <button type="submit" class="btn-2 btn btn-danger btn-block" style="" id="btn1">修改交易密码</button>
+
+        <!--修改密码-->
+
+    <!-- </form> -->
+{include file="public/footers"}  
+
+    
+
+<script>
+
+    $("#gongneng").click(function () {
+        $("#zhezhao").css("display","block")
+    });
+    $(".navH").click(function () {
+        $("#zhezhao").css("display","none")
+    });
+
+
+   //  $("#edit_login_paw").click(function () {
+   //      var old_login_paw=$('#old_login_paw').val();
+   //      var new_login_paw=$('#new_login_paw').val();
+   //      var confirm_login_paw=$('#confirm_login_paw').val();
+   //      var user_id=$('#user_id').val();
+
+
+</script>
+<script type="text/javascript">
+        $("#btn").each(function(){
+            $(this).click(function(){
+                    var oldpwd = $("#anzhi").val();
+                    var newpwd = $("#anzhi-1").val();
+                    var newpwd1 = $("#zhanghao-input").val();
+                    if(oldpwd == ""){
+                        layer.msg('原密码不能为空', {icon: 2});
+                    }else if(newpwd == "" || newpwd1 == ""){
+                        layer.msg('新密码不能为空', {icon: 2});
+                    }else if(newpwd1 != newpwd){
+                        layer.msg('两次新密码输入不一致', {icon: 2});
+                    }else if(newpwd == oldpwd){
+                        layer.msg('新密码不能跟旧密码相同', {icon: 2});   
+                    }else{
+                        $.ajax({
+                            url:"{:url('edit_loginpwd')}",
+                            type:"post",
+                            data:{"oldpwd":oldpwd,'newpwd':newpwd},
+                            success:function(res){
+                                if(res=="ok"){
+                                    layer.msg("修改成功", function(){
+                                        location.href="/index/login/login";
+                                    });
+                                }else{
+                                    layer.msg(res);
+                                }
+                            }
+                        })
+               }   
+                
+            });
+        });
+         $("#btn1").each(function(){
+            $(this).click(function(){
+                    var oldjyw = $("#jiaoyi-1").val();
+                    var newjyw = $("#denglu-1").val();
+                    var newjyw1 = $("#queren-input").val();
+                    if(oldjyw == ""){
+                        layer.msg('原交易密码不能为空', {icon: 2});
+                    }else if(newjyw == "" || newjyw1 == ""){
+                        layer.msg('新交易密码不能为空', {icon: 2});
+                    }else if(newjyw1 != newjyw){
+                        layer.msg('两次新密码输入不一致', {icon: 2});
+                    }else if(newjyw == oldjyw){
+                        layer.msg('新交易密码不能跟旧交易密码相同', {icon: 2});   
+                    }else{
+                        $.ajax({
+                            url:"{:url('edit_jypwd')}",
+                            type:"post",
+                            data:{"oldjyw":oldjyw,'newjyw':newjyw},
+                            success:function(res){
+                                if(res=="ok"){
+                                    layer.msg("修改成功", function(){
+                                        location.href="{:url('edit_paw')}";
+                                    });
+                                }else{
+                                    layer.msg(res);
+                                }
+                            }
+                        })
+               }   
+                
+            });
+        });
+</script>

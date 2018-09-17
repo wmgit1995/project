@@ -1,0 +1,119 @@
+
+{include file="public/header"}
+{include file="public/page"}
+<body>
+<div class="x-nav">
+
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+
+    <xblock>
+
+        <button class="layui-btn" onclick="banner_save('添加轮播图','banner_save.html','600','500')"> <i class="layui-icon">&#xe608;</i>添加轮播图</button>
+
+    </xblock>
+
+
+    <table class="layui-table">
+        <thead>
+        <tr>
+
+            <th>
+                ID
+            </th>
+
+            <th>
+                图片
+            </th>
+            <th>
+                链接
+            </th>
+            <th>
+                状态
+            </th>
+            <th>
+                排序
+            </th>
+            <th>
+                操作
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $list as $k=>$vo}
+        <tr>
+
+            <td>
+                {$vo['id']}
+            </td>
+            <td>
+                <img src="{$vo['imgurl']}" style="width: 50px"/>
+            </td>
+            <td >
+                {$vo['link']}
+            </td>
+            <td>{eq name="vo.status" value="0"}正常{else/}禁用{/eq}</td>
+            <td>{$vo['sort']}</td>
+
+            <td class="td-manage">
+
+                <a title="编辑" href="javascript:;" editId="{$vo.id}" onclick="banner_save('编辑','banner_save.html?id={$vo.id}','600','510')"
+                   class="ml-5" style="text-decoration:none">
+                    <i class="layui-icon">&#xe642;</i>
+                </a>
+                <a title="删除" href="javascript:;" attr="{$vo.id}" onclick="banner_del(this)"
+                   style="text-decoration:none">
+                    <i class="layui-icon">&#xe640;</i>
+                </a>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    <div id="page" style="display:none"></div>
+    <div style="text-align:center;">{$list->render()}</div>
+</div>
+
+
+{include file="public/footercom"}
+<script>
+
+    /*-添加*/
+    function banner_save(title,url,w,h){
+        x_admin_show(title,url,w,h);
+    }
+
+
+</script>
+
+
+<script>
+    function banner_del(obj){
+        var id = obj.getAttribute('attr');
+        // alert(user_id);
+        layer.msg('你确定要删除吗？',{
+            time: 0 //不自动关闭,
+            ,btn: ['确定', '取消']
+            ,yes: function(index){
+                layer.close(index);
+                $.ajax({
+                    url:"{:url('setting/banner_del')}",
+                    data:{"id":id},
+                    success:function(data){
+                        if(data.status==1){
+                            layer.msg("删除成功", function(){
+                                location.href="{:url('/admins/setting/banner')}";
+                            });
+                        }else{
+                            layer.msg(data.msg,{icon:2});
+                        }
+                    }
+                })
+            }
+        })
+    }
+
+</script>
+</body>
+</html>

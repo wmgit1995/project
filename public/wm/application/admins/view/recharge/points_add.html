@@ -1,0 +1,92 @@
+{include file="public/header"}
+    <body>
+        <div class="x-body">
+          
+                <div class="layui-form-item">
+                    <label for="username" class="layui-form-label">
+                        <span class="x-red">*</span>代理ID
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="username" name="username" required="" lay-verify="required"
+                        autocomplete="off" class="layui-input">
+                    </div>
+                    
+                </div>
+                 <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                        <span class="x-red">*</span>充值彩分量
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="L_email" name="email" required="" lay-verify="email"
+                        autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="x-red">*</span>充值为正数，扣除为负数，例如扣除100彩分，则输入-100
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <button  class="layui-btn" id="submit" lay-filter="add" lay-submit="">
+                        确定充值
+                    </button>
+                </div>
+           
+        </div>
+        <script type="text/javascript">
+          $('#submit').click(function(){
+            var id=$('#username').val();
+           
+            var rate=$('#L_email').val();
+            
+
+            if(id==""){
+              layer.msg('代理id不能为空', {icon: 2});
+            }else if(rate==""){
+              layer.msg('充值彩分量不能为空', {icon: 2});
+            }else{
+
+                layer.msg('充值'+rate+'分到代理ID为'+id+'？',{
+                     time: 0 //不自动关闭,
+                     ,btn: ['确定', '取消']
+                     ,yes: function(index){
+                          layer.close(index);
+                           $.ajax({
+                            url:"{:url('points_add')}",
+                            type:"post",
+                            data: {"aid":id,"points":rate},
+                            success:function(res){
+                                if(res=="ok"){
+                                   
+                                    layer.msg('充值成功', function(){
+                                        location.href="{:url('/recharge/points_list')}";
+                                    });
+                                }else{
+                                    layer.msg(res, {icon: 2});
+                                }
+                            }
+                        })
+                     }
+                })
+                // $.ajax({
+                //     url:"{:url('points_add')}",
+                //     type:"post",
+                //     data: {"aid":id,"points":rate},
+                //     success:function(res){
+                //         if(res=="ok"){
+                           
+                //             layer.msg('充值成功', function(){
+                //                 location.href="{:url('/recharge/points_list')}";
+                //             });
+                //         }else{
+                //             layer.msg(res, {icon: 2});
+                //         }
+                //     }
+                // })
+            }
+          })
+        </script>
+        
+    </body>
+
+</html>

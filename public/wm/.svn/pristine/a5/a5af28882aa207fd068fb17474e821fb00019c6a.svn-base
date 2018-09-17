@@ -1,0 +1,128 @@
+{include file="public/header"}
+
+   <body>
+       <div class="x-body">
+           <form id="myform" class="layui-form" method="post">
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       公告标题
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="title" name="title" required lay-verify="required"
+                       autocomplete="off" value="{$an_info ? $an_info['title'] : ''}" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       公告文章分类名称不可为空
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       公告分类
+                   </label>
+                   {$status_option}
+                   <div class="layui-form-mid layui-word-aux">
+                       必填选项，选择下拉分类名称即可
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       状态
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="status" name="status" required lay-verify="required"
+                              autocomplete="off" value="{$an_info ? $an_info['status'] : 0}" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       0禁用 1启用
+                   </div>
+               </div>
+               <!-- <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       文章内容
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="content" name="content" required lay-verify="required"
+                              autocomplete="off" value="{$an_info ? $an_info['content'] : ''}" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       分类描述可填可不填
+                   </div>
+               </div> -->
+               <div class="layui-form-item">
+                    <label for="" class="layui-form-label">
+                       文章内容
+                   </label>
+                   <div class="layui-input-inline" style='width:60%'>
+                       <!-- 加载百度Ueditor编辑器的容器start -->
+                        <script id="container" name="content" type="text/plain">{$an_info['content']}</script>
+                        <script type="text/javascript" src="__STATIC__/admins/ueditor/ueditor.config.js"></script>
+                        <!-- 编辑器源码文件 -->
+                        <script type="text/javascript" src="__STATIC__/admins/ueditor/ueditor.all.js"></script>
+                        <!-- 实例化编辑器 -->
+                        <script type="text/javascript">
+                            var ue = UE.getEditor('container', {
+                                autoHeightEnabled: true,
+                                autoFloatEnabled: true,
+                                initialFrameWidth: null,
+                                initialFrameHeight: '300',
+                                toolbars: [
+                                    ['fullscreen', 'source', 'undo', 'redo', 'simpleupload',],
+                                    ['bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc']
+                                ]
+                            });
+                        </script>
+                        <!-- 加载百度Ueditor编辑器的容器end -->
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       分类描述可填可不填1
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                   </label>
+                   <button  class="layui-btn" lay-filter="save" lay-submit="" id="save">
+                       保存
+                   </button>
+               </div>
+           </form>
+       </div>
+
+{include file="public/footercom"}
+
+       <script>
+           $('#save').click(function(){
+                var an_name=$('#title').val();
+                var an_content=$('#content').val();
+                var an_list=$('#an_id').val();
+                var anId=$('#anId').val();
+
+               $.ajax({
+                   url:"{:url('Announce/add', ['id' => " . anId . "])}",
+                   data:{"an_name":cate_name,"an_content":an_content,"anId":anId,"an_list":an_list},
+                   type:"post",
+                   success:function(res){
+                       if(res == 'ok'){
+                           layer.msg('添加成功！',{icon: 5},function(){
+                               location.href="/admins/Announce/index";
+                           });
+                       }else{
+                           layer.msg(res,{icon:2});
+                       }
+                   }
+               })
+           });
+
+
+       </script>
+       <script>
+       var _hmt = _hmt || [];
+       (function() {
+         var hm = document.createElement("script");
+         hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+         var s = document.getElementsByTagName("script")[0];
+         s.parentNode.insertBefore(hm, s);
+       })();
+       </script>
+   </body>
+
+</html>

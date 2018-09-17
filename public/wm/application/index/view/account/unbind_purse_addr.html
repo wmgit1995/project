@@ -1,0 +1,80 @@
+{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/qianbaodizhi-unband.css">
+    <style>
+        input{
+            background: white;
+        }
+        a:hover{
+          text-decoration: none;
+        }
+    </style>
+<body style="background: #EFEFEF">
+<div class="contain"  style="height:520px;">
+    <!--头部-->
+    {include file="public/top_menu"}
+    <!--头部-->
+    <!--加空白-->
+    <div style=" height: 70px;width: 100%">
+    </div>
+    <!--加空白-->
+    <div class="row">
+    </div>
+    <form action="" class="form-horizontal">
+        <!--当前钱包地址-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="anzhi" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0;background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0">当前钱包地址</span>
+            </label>
+            <input type="text" placeholder=""  class="col-xs-10" id="anzhi" >
+        </div>
+        <!--当前钱包地址-->
+        <!--账号-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="zhanghao" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0;background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0">账号</span>
+            </label>
+            <input type="text" value="bbc" class="col-xs-10" id="zhanghao" disabled style="color: black">
+        </div>
+        <!--账号-->
+        <!--交易密码-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;margin-bottom: 15px; min-width: 24.75rem ;" >
+            <label for="jiaoyi-1" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0; background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0"> 交易密码</span>
+            </label>
+            <input type="password" placeholder="输入交易密码"  class="col-xs-10" id="jiaoyi-1">
+        </div>
+        <!--交易密码->
+        <!--新的钱包地址-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;min-width: 24.75rem ;" >
+            <label for="qianbao-1" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0; background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0"> 新的钱包地址</span>
+            </label>
+            <input type="text" placeholder="输入钱包地址"  class="col-xs-10" id="qianbao-1">
+        </div>
+        <!--新的钱包地址-->
+        <!--确认钱包地址-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;min-width: 24.75rem ;" >
+            <label for="qianbao-2" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0; background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0"> 确认钱包地址</span>
+            </label>
+            <input type="text" placeholder="确认钱包地址"  class="col-xs-10" id="qianbao-2">
+        </div>
+        <!--确认钱包地址-->
+        <!--绑定钱包地址-->
+        <button type="submit" class="btn btn-danger btn-block" style="border: none;outline: none">绑定钱包地址</button>
+        <!--绑定钱包地址-->
+        <!--文字-->
+        <div class="row">
+            <p class="col-xs-12 text-center footer-p">钱包地址一经绑定后不可修改，若有问题请联系客服或咨询留言</p>
+        </div>
+        <!--文字-->
+    </form>
+    {include file="public/footers"}
+<script>
+    $("#gongneng").click(function () {
+        $("#zhezhao").css("display","block")
+    })
+    $(".navH").click(function () {
+        $("#zhezhao").css("display","none")
+    })
+</script>

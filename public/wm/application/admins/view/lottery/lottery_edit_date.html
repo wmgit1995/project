@@ -1,0 +1,128 @@
+ {include file="public/header"}
+    <body>
+        <style type="text/css">
+        #sel_btn{
+            height: 21px;
+            line-height: 21px;
+            padding: 0 11px;
+            background: #02bafa;
+            border: 1px #26bbdb solid;
+            border-radius: 3px;
+            /*color: #fff;*/
+            display: inline-block;
+            text-decoration: none;
+            font-size: 16px;
+            outline: none;
+        }
+        </style>
+       <div class="x-body">
+         <div style="padding-left:20%;padding-bottom:20px;">
+              <p id='content'></p>
+         </div>
+         <div style="padding-left:20%;padding-bottom:20px;">
+              <p id='content'>开奖时间例如：35或者38或者30分钟一开</p>
+         </div>
+         <form class="layui-form">
+            <input type="hidden" name="edit_id" id="edit_id" value="{$info.id}" >
+             <div class="layui-form-item">
+                 <label for="username" class="layui-form-label">
+                     <span class="x-red">*</span>开奖时间
+                 </label>
+                 <div class="layui-input-inline">
+                     <input type="text" id="open_date" name="open_date" value="{$info.open_date}" required="" lay-verify="required"
+                     autocomplete="off" class="layui-input">
+                 </div>
+                 <!-- <div class="layui-form-mid layui-word-aux">
+                     <span class="x-red">*</span><a id="sel_btn" onclick="getstr();" href="javascript:void(0)">随机生成号码 </a>
+                 </div> -->
+             </div>
+             <!-- <div class="layui-form-item">
+                 <label for="phone" class="layui-form-label">
+                     <span class="x-red">*</span>赔率
+                 </label>
+                 <div class="layui-input-inline">
+                     <input type="text" id="" name="odds" required="" lay-verify=""
+                            autocomplete="off" class="layui-input">
+                 </div>
+                 <div class="layui-form-mid layui-word-aux">
+                     <span class="x-red">*</span>单位：倍
+                 </div>
+             </div> -->
+               <div class="layui-form-item">
+                   <label for="L_repass" class="layui-form-label">
+                   </label>
+                   <button  class="layui-btn" lay-filter="save" lay-submit="">
+                       保存
+                   </button>
+               </div>
+           </form>
+       </div>
+{include file="public/footercom"}
+       <script>
+           layui.use(['form','layer'], function(){
+               $ = layui.jquery;
+             var form = layui.form()
+             ,layer = layui.layer;
+
+             //监听提交
+             form.on('submit(save)', function(data){
+               var uid=$("#id").val();
+               var rebate=$("#rebate").val();
+               console.log(data);
+               //发异步，把数据提交给php
+               var open_date=$("input[name='open_date']").val();
+               // var edit_id = $('#edit_id').val();//jquery
+               var edit_id = document.getElementById("edit_id").value;//原生
+               // var odds=$("input[name='odds']").val();
+               //发异步，把数据提交给php
+               $.ajax({
+                   url:"{:url('lottery/lottery_edit_date')}",
+                   // data:{"open_date":open_date,"odds":odds},
+                   data:{"open_date":open_date,"id":edit_id},
+                   type:"post",
+                   success:function(res){
+                       if(res=="ok"){
+                           layer.msg("修改成功", {icon: 6,time:1000},function () {
+                           // 获得frame索引
+                           /*var index = parent.layer.getFrameIndex(window.name);
+                           //关闭当前frame
+                           parent.layer.close(index);
+                           parent.location.reload();*/
+                           location.href="{:url('lottery_edit_date')}";
+                           });
+                       }
+                   }
+               });
+               return false;
+             });
+           });
+       </script>
+       <script>
+       var _hmt = _hmt || [];
+       (function() {
+         var hm = document.createElement("script");
+         hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+         var s = document.getElementsByTagName("script")[0];
+         s.parentNode.insertBefore(hm, s);
+       })();
+       </script>
+       <script type="text/javascript">
+           function getstr(){
+
+                   $.ajax({
+                       type:"post",
+                       url:"{:url('lottery/getStr')}",
+                       data:{"demo":1},//这里data传递过去的是序列化以后的字符串
+                       success:function(data){
+                           // document.getElementById("#open_date").value(data);
+                           $("#open_date").attr("value",data);
+                       }
+                   });
+           }
+           // $("#sel_btn").click(function(){
+
+           // });
+       </script>
+   </body>
+
+</html>

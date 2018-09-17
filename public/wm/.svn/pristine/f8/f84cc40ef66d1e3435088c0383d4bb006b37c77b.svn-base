@@ -1,0 +1,218 @@
+{include file="public/header"}
+
+   <body>
+       <div class="x-body">
+           <form id="myform" class="layui-form" method="post">
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       会员等级
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="level_id " name="level_id" required lay-verify="required"
+                       autocomplete="off" value="1" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       默认1
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       会员名
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="user_login" name="user_login" required lay-verify="required"
+                       autocomplete="off" value="" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       会员名不可重复
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       手机号
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="mobile" name="mobile" required lay-verify="required"
+                              autocomplete="off" value="" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       一个手机号只能注册三个会员
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       会员昵称
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="user_nickname" name="user_nickname" required lay-verify="required"
+                              autocomplete="off" value="" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       会员昵称
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       会员密码
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="user_pass" name="user_pass" required lay-verify="required"
+                              autocomplete="off" value="" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                      密码
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       会员类型
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="user_type" name="user_type" required lay-verify="required"
+                              autocomplete="off" value="1" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       1 admin 2 会员 默认1
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       性别
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="sex" name="sex" required lay-verify="required"
+                              autocomplete="off" value="0" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       0保密 1 男 2 女 默认0
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       门票数量
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="ticket" name="ticket" required lay-verify="required"
+                              autocomplete="off" value="0" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       默认0
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       有机果数量
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="woc_num" name="woc_num" required lay-verify="required"
+                              autocomplete="off" value="0" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       默认0
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       信用押金
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="credit_deposit" name="credit_deposit" required lay-verify="required"
+                              autocomplete="off" value="0" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       默认0
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       信用种子
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="credit_seed" name="credit_seed" required lay-verify="required"
+                              autocomplete="off" value="0" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       默认0
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       状态
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="user_status" name="user_status" required lay-verify="required"
+                              autocomplete="off" value="1" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       0禁用 1正常 2未验证 默认1
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                       上级会员
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="parent" name="parent" required lay-verify="required"
+                              autocomplete="off" value="0-" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       （0-1,0-1-2,0-1-2-4）
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="" class="layui-form-label">
+                   </label>
+                   <button  class="layui-btn" lay-filter="save" lay-submit="" id="save">
+                       保存
+                   </button>
+               </div>
+           </form>
+       </div>
+{include file="public/footercom"}
+       <script>
+           $('#save').click(function(){
+                var mobile=$('#mobile').val();
+                var level_id=$('#level_id').val();
+                var user_login=$('#user_login').val();
+                var user_nickname=$('#user_nickname').val();
+                var user_type=$('#user_type').val();
+                var sex=$('#sex').val();
+                var ticket=$('#ticket').val();
+                var woc_num=$('#woc_num').val();
+                var credit_deposit=$('#credit_deposit').val();
+                var credit_seed=$('#credit_seed').val();
+                var user_status=$('#user_status').val();
+                var parent=$('#parent').val();
+                var user_pass=$('#user_pass').val();
+               // alert(formData)
+
+               $.ajax({
+                   url:"{:url('User/member_add')}",
+                   data:{"mobile":mobile,"level_id":level_id,"user_login":user_login,"user_nickname":user_nickname,"user_type":user_type,"sex":sex,"ticket":ticket,"woc_num":woc_num,"credit_deposit":credit_deposit,"credit_seed":credit_seed,"user_status":user_status,"parent":parent},
+                   type:"post",
+                   success:function(res){
+                       if(res=="ok"){
+                           layer.msg('添加成功！',{icon: 5},function(){
+                               location.href="/admins/User/index";
+                           });
+                       }else{
+                           layer.msg(res,{icon:2});
+                       }
+                   }
+               })
+           });
+
+
+       </script>
+       <script>
+       var _hmt = _hmt || [];
+       (function() {
+         var hm = document.createElement("script");
+         hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+         var s = document.getElementsByTagName("script")[0];
+         s.parentNode.insertBefore(hm, s);
+       })();
+       </script>
+   </body>
+
+</html>

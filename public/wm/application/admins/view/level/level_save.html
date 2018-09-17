@@ -1,0 +1,171 @@
+{include file="public/header"}
+
+   <body>
+       <div class="x-body">
+           <form id="myform" class="layui-form" method="post">
+               <div class="layui-form-item">
+                   <label for="L_username" class="layui-form-label">
+                       等级名称
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="" name="name" required lay-verify="required"
+                       autocomplete="off" value="{$info.name|default=''}" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       等级名称
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="L_username" class="layui-form-label">
+                       团队达标
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="" name="team_num" required lay-verify="required"
+                       autocomplete="off" value="{$info.team_num|default=0}" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="L_username" class="layui-form-label">
+                       前排达标
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="" name="front" required lay-verify="required"
+                              autocomplete="off" value="{$info.front|default=0}个" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       <select name="front_id">
+                           {volist name='list' id='vo'}
+                           <option value="{$vo.id}" {eq name="vo.id" value="$info.front_id"}selected{/eq} >{$vo.name}</option>
+                           {/volist}
+                       </select>
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="L_username" class="layui-form-label">
+                       静态对应金额
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="" name="static" required lay-verify="required"
+                              autocomplete="off" value="{$info.static|default=''}" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       （下限--上限）
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="L_username" class="layui-form-label">
+                       静态收益百分比
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="" name="static_scale" required lay-verify="required"
+                       autocomplete="off" value="{$info.static_scale|default=0}" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       不要%
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="L_username" class="layui-form-label">
+                       动态收益百分比
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="" name="moving_scale"  required lay-verify="required"
+                       autocomplete="off" value="{$info.moving_scale|default=0}" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       不要%
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="L_username" class="layui-form-label">
+                       动态代数
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="" name="moving_generation"  required lay-verify="required"
+                       autocomplete="off" value="{$info.moving_generation|default=1}" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       0代表无限代
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="L_username" class="layui-form-label">
+                       信用押金
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="" name="credit_deposit"  required lay-verify="required"
+                       autocomplete="off" value="{$info.credit_deposit|default=0}" class="layui-input">
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="L_username" class="layui-form-label">
+                       最大排单数
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="" name="queue_num"  required lay-verify="required"
+                              autocomplete="off" value="{$info.queue_num|default=2}" class="layui-input">
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="L_username" class="layui-form-label">
+                       排序
+                   </label>
+                   <div class="layui-input-inline">
+                       <input type="text" id="" name="sort"  required lay-verify="required"
+                              autocomplete="off" value="{$info.sort|default=0}" class="layui-input">
+                   </div>
+                   <div class="layui-form-mid layui-word-aux">
+                       越小越靠前默认0
+                   </div>
+               </div>
+               <div class="layui-form-item">
+                   <label for="L_repass" class="layui-form-label">
+                   </label>
+                   <input type="hidden" name="id" value="{$info.id|default=0}">
+                   <button  class="layui-btn" lay-filter="save" lay-submit="">
+                       保存
+                   </button>
+               </div>
+           </form>
+       </div>
+{include file="public/footercom"}
+       <script>
+           layui.use(['form','layer'], function(){
+               $ = layui.jquery;
+             var form = layui.form()
+             ,layer = layui.layer;
+
+             //监听提交
+             form.on('submit(save)', function(data){
+               //发异步，把数据提交给php
+               var formData = $("#myform").serialize();
+               // alert(formData)
+               $.ajax({
+                   url:"{:url('Level/level_save')}",
+                   data:formData,
+                   type:"post",
+                   success:function(res){
+                       if(res=="ok"){
+                           layer.msg("提交成功", {icon: 6,time:1000},function () {
+                           // 获得frame索引
+                           var index = parent.layer.getFrameIndex(window.name);
+                           //关闭当前frame
+                           parent.layer.close(index);
+                           parent.location.reload();
+                           });
+                       }else if(res=='01'){
+                           layer.msg('用户等级已存在',{icon:2});
+                       }
+                   }
+               });
+               return false;
+             });
+           });
+       </script>
+
+   </body>
+
+</html>

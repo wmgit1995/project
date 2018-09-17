@@ -1,0 +1,110 @@
+
+{include file="public/header"}
+{include file="public/page"}
+<body>
+<div class="x-nav">
+
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <xblock>
+
+        <button class="layui-btn" onclick="backup_add(this)"> <i class="layui-icon">&#xe608;</i>新增备份</button>
+
+    </xblock>
+
+
+    <table class="layui-table">
+        <thead>
+        <tr>
+
+            <th>
+                备份时间
+            </th>
+            <th>
+                文件大小
+            </th>
+            <th>
+                操作
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $list as $k=>$vo}
+        <tr>
+
+            <td>
+                {$k}
+            </td>
+
+            <td >
+                {$vo['size']/1024|ceil}KB
+            </td>
+
+            <td class="td-manage">
+                <a title="删除" href="javascript:;" attr="{$vo.time}" onclick="backup_del(this)"
+                   style="text-decoration:none">
+                    <i class="layui-icon">&#xe640;</i>
+                </a>
+                <a title="下载" href="{:url('backup_down',['id'=>$vo['time']])}" target="_blank"
+                   style="text-decoration:none">
+                    <i class="layui-icon">&#xe601;</i>
+                </a>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    <div id="page" style="display:none"></div>
+</div>
+
+
+{include file="public/footercom"}
+
+
+<script>
+    function backup_add(obj) {
+        obj.setAttribute('disabled', 'disabled');
+        obj.innerHTML='备份中...';
+        $.ajax({
+            url:"{:url('setting/backup_add')}",
+            data:{"id":1},
+            success:function(data){
+                if(data=='ok'){
+                    layer.msg("备份成功", function(){
+                        location.href="{:url('/admins/setting/backuplist')}";
+                    });
+                }else{
+                    layer.msg("备份失败",{icon:2});
+                    obj.removeAttribute('disabled');
+                }
+            }
+        })
+    }
+    function backup_del(obj){
+        var id = obj.getAttribute('attr');
+        layer.msg('你确定要删除吗？',{
+            time: 0 //不自动关闭,
+            ,btn: ['确定', '取消']
+            ,yes: function(index){
+                layer.close(index);
+                $.ajax({
+                    url:"{:url('setting/backup_del')}",
+                    data:{"id":id},
+                    success:function(data){
+                        if(data.status==1){
+                            layer.msg("删除成功", function(){
+                                location.href="{:url('/admins/setting/backuplist')}";
+                            });
+                        }else{
+                            layer.msg(data.msg,{icon:2});
+                        }
+                    }
+                })
+            }
+        })
+    }
+
+</script>
+</body>
+</html>

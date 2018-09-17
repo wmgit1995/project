@@ -1,0 +1,98 @@
+{include file="public/header"}
+
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>会员管理</cite></a>
+              <a><cite>会员列表</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+        </div>
+        <div class="x-body">
+            <form class="layui-form x-center"  action="admin_coat.html" method="get" style="width:800px">
+                <div class="layui-form-pane" style="margin-top: 15px;">
+                  <div class="layui-form-item">
+                    
+                    <div class="layui-input-inline">
+                      <input type="text" name="uid"  placeholder="请输入代理ID" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-input-inline" style="width:80px">
+                        <input type="submit" value="查询" class="layui-btn" /> 
+                    </div>
+                  </div>
+                </div> 
+            </form>
+            <xblock><span class="x-right" style="line-height:40px"></span></xblock>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>代理ID</th>
+                        <th>代理账号</th>
+                        <th>代理昵称</th>
+                        <th>反水比例</th>
+                        <th>投注总额</th>
+                        <th>反水额</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {foreach $list as $k=>$v }
+                    <tr>
+                        <td>{$v['id']}</td>
+                        <td>{$v['admin_phone']}</td>
+                        <td>{$v['admin_name']}</td>
+                        <td class="rebate">{$v['admin_rebate']}</td>
+                        <td class="aabets">{$v['admin_bets']}</td>
+                        <td class="water">{$v['admin_water']}</td>
+                        <td class="td-manage">
+                                <input type="hidden" id="aid" name="" value="{$v['id']}">
+                                <!-- <input type="hidden" id="money" name="" value="{$v['admin_money']}"> -->
+                                <span class="layui-btn layui-btn-normal3 layui-btn-mini del" style="background-color: red">
+                                确认反水
+                               </span>
+                        </td>
+                    </tr>
+               {/foreach}
+                </tbody>
+            </table>
+   
+            <div id="page" style="text-align: center"> {$list->render()}</div>
+        </div>
+       <script type="text/javascript">
+         
+
+           $(".del").each(function(){
+                $(this).click(function(){
+        
+                var aid=$(this).parent().find("#aid").val();
+                // var money=$(this).parent().find("#money").val();
+                var water=$(this).parent().parent().find(".water").text();
+                var bets=$(this).parent().parent().find(".aabets").text();
+                var rebate=$(this).parent().parent().find(".rebate").text();
+                // alert(bets);
+                layer.msg('确认反水代理ID为'+aid+'的金额？',{
+                     time: 0 //不自动关闭,
+                     ,btn: ['确定', '取消']
+                     ,yes: function(index){
+                          layer.close(index);
+                          $.ajax({
+                            url:"{:url('coat_admin')}",
+                            data:{'aid':aid,'water':water,'bets':bets,'rebate':rebate},
+                            success:function(res){
+                                if(res=="ok"){
+                                    layer.msg("反水成功",function(){
+                                      location.href="{:url('/coat/admin_coat')}";
+                                    });
+                                }else{
+                                    layer.msg("反水失败",{icon:2});
+                                }
+                            }
+                          })
+                     }
+                })
+                });
+            });
+       </script>
+    </body>
+</html>

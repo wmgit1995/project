@@ -1,0 +1,89 @@
+{include file="public/header"}
+
+<body>
+<div class="x-nav">
+
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <form id="myform" class="layui-form" method="post">
+        <div class="layui-form-item">
+            <label for="L_username" class="layui-form-label">
+                排队周期
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="" name="cycle" required lay-verify="required"
+                       autocomplete="off" value="{$setting.cycle}" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_username" class="layui-form-label">
+                直推奖
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="" name="linenum" required lay-verify="required"
+                       autocomplete="off" value="{$setting.linenum}" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                不要%
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_username" class="layui-form-label">
+                开放注册
+            </label>
+            <div class="layui-input-inline" >
+                <select name="register">
+                    {volist name="register" id="vol"}
+                    <option value="{$key}" {eq name="key" value="$setting.register"}selected{/eq}>{$vol}</option>
+                    {/volist}
+                </select>
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_repass" class="layui-form-label">
+            </label>
+            <input name="id" type="hidden" value="{$setting.id}">
+            <button  class="layui-btn" lay-filter="save" lay-submit="">
+                保存
+            </button>
+        </div>
+    </form>
+</div>
+{include file="public/footercom"}
+<script>
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form()
+            ,layer = layui.layer;
+
+        //监听提交
+        form.on('submit(save)', function(data){
+            //发异步，把数据提交给php
+            var formData = $("#myform").serialize();
+            // alert(formData)
+            $.ajax({
+                url:"{:url('setting/match')}",
+                data:formData,
+                type:"post",
+                success:function(res){
+                    if(res=="ok"){
+                        layer.msg("提交成功", {icon: 6});
+                    }else{
+                        layer.msg('系统繁忙请稍后再试',{icon:2});
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
+</body>
+
+</html>

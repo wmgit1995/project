@@ -1,0 +1,127 @@
+ {include file="public/header"}
+    <body>
+        <style type="text/css">
+        #sel_btn{
+            height: 21px;
+            line-height: 21px;
+            padding: 0 11px;
+            background: #02bafa;
+            border: 1px #26bbdb solid;
+            border-radius: 3px;
+            /*color: #fff;*/
+            display: inline-block;
+            text-decoration: none;
+            font-size: 16px;
+            outline: none;
+        }
+        </style>
+       <div class="x-body">
+         <div style="padding-left:20%;padding-bottom:20px;">
+              <p id='content'></p>
+         </div>
+         <div style="padding-left:20%;padding-bottom:20px;">
+              <p id='content'>赔率设置例如：10或者16或者30 等</p>
+         </div>
+         <form class="layui-form" id="myform">
+            <input type="hidden" name="id" id="edit_id" value="{$info.id}" >
+             <div class="layui-form-item">
+                 <label for="username" class="layui-form-label">
+                     <span class="x-red">*</span>赔率
+                 </label>
+                 <div class="layui-input-inline">
+                     <input type="text" id="odds" name="odds" value="{$info.odds}" required="" lay-verify="required"
+                     autocomplete="off" class="layui-input">
+                 </div>
+                 <!-- <div class="layui-form-mid layui-word-aux">
+                     <span class="x-red">*</span><a id="sel_btn" onclick="getstr();" href="javascript:void(0)">随机生成号码 </a>
+                 </div> -->
+             </div>
+             <div class="layui-form-item">
+                 <label for="phone" class="layui-form-label">
+                     <span class="x-red">*</span>通知
+                 </label>
+                 <div class="layui-input-inline"  style="500px;">
+                     <textarea rows="8" role="6" name="notice" style="500px;">{$info.notice}</textarea>
+                 </div>
+                 <div class="layui-form-mid layui-word-aux">
+                     <span class="x-red">*</span>
+                 </div>
+             </div>
+               <div class="layui-form-item">
+                   <label for="L_repass" class="layui-form-label">
+                   </label>
+                   <button  class="layui-btn" lay-filter="save" lay-submit="">
+                       保存
+                   </button>
+               </div>
+           </form>
+       </div>
+{include file="public/footercom"}
+       <script>
+           layui.use(['form','layer'], function(){
+               $ = layui.jquery;
+             var form = layui.form()
+             ,layer = layui.layer;
+
+             //监听提交
+             form.on('submit(save)', function(data){
+               var uid=$("#id").val();
+               var rebate=$("#rebate").val();
+               console.log(data);
+               //发异步，把数据提交给php
+               var odds=$("input[name='odds']").val();
+               // var edit_id = $('#edit_id').val();//jquery
+               var edit_id = document.getElementById("edit_id").value;//原生
+               var formData = $("#myform").serialize();
+               // var odds=$("input[name='odds']").val();
+               //发异步，把数据提交给php
+               $.ajax({
+                   url:"{:url('lottery/edit_notice')}",
+                   // data:{"odds":odds,"odds":odds},
+                   data:formData,
+                   type:"post",
+                   success:function(res){
+                       if(res=="ok"){
+                           layer.msg("修改成功", {icon: 6,time:1000},function () {
+                           // 获得frame索引
+                           var index = parent.layer.getFrameIndex(window.name);
+                           //关闭当前frame
+                           parent.layer.close(index);
+                           parent.location.reload();
+                           });
+                       }
+                   }
+               });
+               return false;
+             });
+           });
+       </script>
+       <script>
+       var _hmt = _hmt || [];
+       (function() {
+         var hm = document.createElement("script");
+         hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+         var s = document.getElementsByTagName("script")[0];
+         s.parentNode.insertBefore(hm, s);
+       })();
+       </script>
+       <script type="text/javascript">
+           function getstr(){
+
+                   $.ajax({
+                       type:"post",
+                       url:"{:url('lottery/getStr')}",
+                       data:{"demo":1},//这里data传递过去的是序列化以后的字符串
+                       success:function(data){
+                           // document.getElementById("#odds").value(data);
+                           $("#odds").attr("value",data);
+                       }
+                   });
+           }
+           // $("#sel_btn").click(function(){
+
+           // });
+       </script>
+   </body>
+
+</html>

@@ -1,0 +1,69 @@
+{include file="public/header"}
+    <body>
+        <div class="x-body">
+            
+                <div class="layui-form-item">
+                    <label for="username" class="layui-form-label">
+                        <span class="x-red">*</span>代理姓名
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="username" name="username" required="" lay-verify="required"
+                        autocomplete="off" class="layui-input" value="{$list['admin_name']}">
+                    </div>
+                </div>
+                 <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                        <span class="x-red">*</span>反水基数
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="L_email" name="email" required="" lay-verify="email"
+                        autocomplete="off" class="layui-input" value="{$list['admin_rebate']}">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="x-red">*</span>请输入合理反水基数，如比例为1%，则填1
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <input type="hidden" value="{$list['id']}" id="aid" name="">
+                    <button  class="layui-btn" id="submit" lay-filter="add" lay-submit="">
+                        确认修改
+                    </button>
+                </div>
+          
+        </div>
+        <script type="text/javascript">
+          $('#submit').click(function(){
+            var uname=$('#username').val();
+            var rate=$('#L_email').val();
+            var id=$(this).parent().find("#aid").val();
+            if(uname==""){
+              layer.msg('代理名不能为空', {icon: 2});
+            }else if(rate==""){
+              layer.msg('反水基数不能为空', {icon: 2});
+            }else{
+               
+                          $.ajax({
+                            url:"{:url('agent_edit')}",
+                            type:"post",
+                            data: {"uname":uname,"rate":rate,"aid":id},
+                            success:function(res){
+                                if(res=="ok"){
+                                    layer.msg('修改成功', function(){
+                                        location.href="/admins/agent/index";
+                                    });
+                                }else{
+                                    layer.msg('修改失败', {icon: 2});
+                                }
+                            }
+                        })
+                
+              
+            }
+          })
+        </script>
+        
+    </body>
+
+</html>

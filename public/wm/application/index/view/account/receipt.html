@@ -1,0 +1,66 @@
+{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/shoukuanxinxi.css">
+  <style>
+    a:hover{
+      text-decoration: none;
+    }
+  </style>
+<body style="background:#EFEFEF">
+<div class="contain"  style="height:520px;">
+    <!--头部-->
+    {include file="public/top_menu"}
+    <!--头部-->
+    <!--加空白-->
+    <div style=" height: 70px;width: 100%">
+    </div>
+    <!--加空白-->
+    <div class="row">
+    </div>
+    <form action="" class="form-horizontal">
+        <!--银行卡号-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="anzhi" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0;background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0">银行卡号</span>
+            </label>
+            <input type="text" placeholder="61243454761854646"  class="col-xs-10" id="anzhi" >
+        </div>
+        <!--银行卡号-->
+        <!--开户人姓名-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;">
+            <label for="yinhang" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0;background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0">开户人姓名</span>
+            </label>
+            <input type="text" placeholder="爱新觉罗"  class="col-xs-10" id="yinhang" >
+        </div>
+        <!--开户人姓名-->
+        <!--银行名称-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;margin-bottom: 15px; min-width: 24.75rem ;" >
+            <label for="jiaoyi-1" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0; background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0"> 银行名称</span>
+            </label>
+            <input type="text" placeholder="大清农业银行"  class="col-xs-10" id="jiaoyi-1">
+        </div>
+        <!--银行名称->
+        <!--开户行地址-->
+        <div class="form-group" style="margin-left: 0;margin-right: 0;min-width: 24.75rem ;" >
+            <label for="denglu-1" class="col-xs-2 anzhi-label text-center" style="padding-left:0;padding-right:0; background: #fff;margin-bottom: 0">
+                <span class="span-1 col-xs-9 col-xs-offset-1 text-left" style="padding-left: 0"> 开户行地址</span>
+            </label>
+            <input type="text" placeholder="浙江省杭州市萧山区金城路支行"  class="col-xs-10" id="denglu-1">
+        </div>
+        <!--开户行地址-->
+        <!--修改密码-->
+        <button type="submit" class="btn btn-danger btn-block" style="  outline: none;
+    border: none;">提交</button>
+        <!--修改密码-->
+    </form>
+    <!--底部-->
+    {include file="public/footers"}
+<script>
+    $("#gongneng").click(function () {
+        $("#zhezhao").css("display","block")
+    })
+    $(".navH").click(function () {
+        $("#zhezhao").css("display","none")
+    })
+</script>

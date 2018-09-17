@@ -1,0 +1,35 @@
+{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/zixunjilu.css">
+
+<div class="contain" style="min-width: 300px">
+    <!--头部-->
+    {include file="public/top_menu"}
+    </div>
+    <!--头部-->
+    <div style="height: 70px"></div>
+        <!--<form class="form-horizontal " >-->
+            <div class="row " style="margin-right: 0;margin-left: 0; ">
+                <label class="col-sm-3 col-xs-3 control-label duifang"  style="margin-left: 1.5rem;text-align: left;min-width:160px;margin-top: 0;margin-bottom: 0;padding-top: 0;padding-bottom: 0;font-size: 26px">
+                咨询记录
+                </label>
+            </div>
+            {foreach $list as $sK=>$sV}
+            <div class="form-group" style="margin-right: 0;margin-left: 0;margin-top:2rem "><!--style="min-width:500px;"-->
+            <div class="row" style="margin-left: 0;margin-right: 0">
+                <a href="{:url('consult_record_detail',['id' => $sV.id])}"> <div  class="zixunjilu" >
+                    <p class="col-xs-7 text-left">{$sV.title}</p>
+                    <span class="col-xs-5 text-right" style="">{$sV.add_time|date="Y-m-d H:i:s",###}</span>
+                </div>
+                </a>
+            </div>
+            {/foreach}
+            </div>
+    {include file="public/footers"}
+<script>
+    $("#gongneng").click(function () {
+        $("#zhezhao").css("display","block")
+    })
+    $(".navH").click(function () {
+        $("#zhezhao").css("display","none")
+    })
+</script>

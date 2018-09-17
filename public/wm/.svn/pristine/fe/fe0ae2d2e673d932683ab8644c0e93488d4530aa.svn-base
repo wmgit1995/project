@@ -1,0 +1,171 @@
+{include file="public/header"}
+{include file="public/page"}
+<?php
+/*
+    @desc utf-8编码下截取中文字符串,参数可以参照substr函数
+    @param $str 要进行截取的字符串
+    @param $start 要进行截取的开始位置，负数为反向截取
+    @param $end 要进行截取的长度
+*/
+function utf8_substr($str,$start=0) {
+    var_dump($str);
+    if(empty($str)){
+        return false;
+    }
+    if (function_exists('mb_substr')){
+        if(func_num_args() >= 3) {
+            $end = func_get_arg(2);
+            return mb_substr($str,$start,$end,'utf-8');
+        }
+        else {
+            mb_internal_encoding("UTF-8");
+            return mb_substr($str,$start);
+        }       
+  
+    }
+    else {
+        $null = "";
+        preg_match_all("/./u", $str, $ar);
+        if(func_num_args() >= 3) {
+            $end = func_get_arg(2);
+            return join($null, array_slice($ar[0],$start,$end));
+        }
+        else {
+            return join($null, array_slice($ar[0],$start));
+        }
+    }
+}
+
+/*
+ * @title 限制公告内容显示长度
+ * @desc 通过一个句号作为判断基准来判断该内容是否超过限制长度
+ * @param $content 要进行截取的字符串内容
+*/
+function subContent($content = '')
+{
+    $newContent = '';
+    $contentArr = explode('。', $content);
+    if (count($contentArr) > 2) {
+        $newContent = $contentArr[0] . '...';
+    } else {
+        $newContent = $content;
+    }
+
+    return $newContent;
+}
+
+?>
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>会员管理</cite></a>
+              <a><cite>会员列表</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+        </div>
+        <div class="x-body">
+            <form class="layui-form x-center" action="index.html" id="form2" method="get">
+                <div class="layui-form-pane" style="margin-top: 15px;">
+                  <div class="layui-form-item">
+                    <div class="layui-input-inline" style="text-align:right;width:20%">
+                      <input type="text" name="title" id="title" placeholder="请输入需要搜索的公告标题" autocomplete="off" class="layui-input" value='{$title ? $title : ''}'>
+                    </div>
+                    <div class="layui-input-inline" style="width:80px">
+                        <button class="layui-btn"  id="search" lay-submit="" lay-filter="sreach"><i class="layui-icon"  onclick=searchuser();>&#xe615;</i></button>
+                    </div>
+                  </div>
+                </div>
+            </form>
+            <xblock>
+                <button class="layui-btn" onclick="javascript:window.location.href='{:url('add')}'"> <i class="layui-icon">&#xe608;</i>添加公告文章</button>
+            </xblock>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>
+                            公告ID
+                        </th>
+                        <th>
+                            公告所属分类
+                        </th>
+                        <th>
+                            公告名称
+                        </th>
+                        <th>
+                            公告内容
+                        </th>
+                        <th>
+                            文章状态
+                        </th>
+                        <th>
+                            创建时间
+                        </th>
+                        <th style="text-align: center">
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {if $lists }
+                    {foreach $lists as $k=>$vo}
+                    <tr {$vo['status'] > 0 ? '' : "style='color:#ccc'"}>
+                        <td>
+                            {$vo['id']}
+                        </td>
+                        <td>
+                            {$vo['cate_name']}
+                        </td>
+                        <td>
+                            <?php
+                                $title = '';
+                                if( mb_strlen($vo['title']) > 15){
+                                    $title = mb_substr($vo['title'], 0, 15) . "...";
+                                } else {
+                                    $title = $vo['title'];
+                                }
+                                echo $title;
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                                // $content = '';
+                                // if( strlen($vo['content']) > 21){
+                                //     $content = utf8_substr($vo['content'], 0, 21) . "...";
+                                // } else {
+                                //     $content = $vo['content'];
+                                // }
+
+                                echo subContent($vo['content']);
+                            ?>
+                        </td>
+                        <td >
+                            {$vo['status'] > 0 ? '启用中' : '<span style="color:#ccc">禁用</span>'}
+                        </td>
+                        <td>
+                            {$vo['create_time']}
+                        </td>
+                        <td class="td-manage" style='text-align:center'>
+                            <input type="hidden" id="aid" name="" value="{$vo['id']}">
+                               <span id="rate1" class="layui-btn layui-btn-mini" onclick="javascript:if(confirm('您确定要执行该操作吗?')){location='{:url('anIsForbidden', ['id' => $vo['id']])}'}">
+                                  {$vo['status']==1?"禁用":"启用"}
+                               </span>
+                               <span class="layui-btn layui-btn-mini rate" onclick="javascript:window.location.href='{:url('add', ['id' => $vo['id']])}'">
+                                  编辑
+                               </span>
+                               <span class="layui-btn layui-btn-mini del" style="background-color: red" onclick="javascript:if(confirm('您确实要执行该操作吗?')){location='{:url('anIsDelete', ['id' => $vo['id']])}'}">
+                                 删除
+                               </span>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    {else/}
+
+                    {/if}
+                </tbody>
+            </table>
+            <div id="page" style="display:none"></div>
+            <div style="text-align:center;">{$lists->render()}</div>
+        </div>
+    </body>
+</html>

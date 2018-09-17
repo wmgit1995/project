@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title></title>
+
+<script src="/static/shouye/js/adapter.js"></script> <!--rem适配js-->
+
+<link rel="stylesheet" href="/static/shouye/css/base.css"> <!--初始化文件-->
+<link rel="stylesheet" href="/static/shouye/css/menu.css"> <!--主样式-->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--ie使用edge渲染模式-->
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+<meta name="renderer" content="webkit"><!--360渲染模式-->
+<meta name="format-detection" content="telephone=notelphone=no, email=no" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+ --><meta name="apple-touch-fullscreen" content="yes"><!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black"><!-- 设置苹果工具栏颜色:默认值为 default，可以定为 black和 black-translucent-->
+<meta http-equiv="Cache-Control" content="no-siteapp" /><!-- 不让百度转码 -->
+<meta name="HandheldFriendly" content="true"><!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+<meta name="MobileOptimized" content="320"><!-- 微软的老式浏览器 -->
+<meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+<meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+<meta name="browsermode" content="application"><!-- UC应用模式 -->
+<meta name="x5-page-mode" content="app"><!-- QQ应用模式 -->
+<meta name="msapplication-tap-highlight" content="no"><!-- windows phone 点击无高光 -->
+</head>
+<body>
+<div style="text-align:center;clear:both">
+</div>
+<div id="menu">
+    <!--隐藏菜单-->
+    <div id="ensconce"  style="">
+        <h2>
+            <img src="/static/shouye/images/menu.png" alt="">
+        </h2>
+    </div>
+    <!--显示菜单-->
+    <div style="background-color: #000">
+    <div id="open" style=" min-width:87px; min-height:300px;">
+        <div class="navH">
+            <span><img class="obscure" src="/static/shouye/images/delete.png" alt=""></span>
+        </div>
+        <div class="navBox">
+            <ul>
+                <li>
+                <img src="/static/shouye/images/logo.png" class="menu_logo"/>
+                </li>
+                <li>
+                    <h2 style="border-bottom:none; margin-left:55px;font-size:0.65rem ">bbc</h2>
+                </li>
+                <li>
+                <div class="vip"><img src="/static/shouye/images/VIP.png" class="VIP"/><p class='menu_num'>9</p></div>
+                </li>
+                <li>
+                    <h2 class="obtain">账户总揽<img src="/static/shouye/images/right.png" class="right"/></h2>
+                </li>
+                <li>
+                    <h2 class="obtain">个人信息<img src="/static/shouye/images/right.png" class="right"/></h2>
+                </li>
+                <li>
+                    <h2 class="obtain">钱包设置<img src="/static/shouye/images/right.png" class="right"/></h2>
+                </li>
+                <li>
+                    <h2 class="obtain">我的邀请<img src="/static/shouye/images/right.png" class="right"/></h2>
+                </li>
+                                <li>
+                    <h2 class="obtain">互助订单<img src="/static/shouye/images/right.png" class="right"/></h2>
+                </li>
+                <li>
+                    <h2 class="obtain">收益管理<img src="/static/shouye/images/right.png" class="right"/></h2>
+                </li>
+                <li>
+                    <h2 class="obtain">客服中心<img src="/static/shouye/images/right.png" class="right"/></h2>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<!-- 顶部 -->
+<div class="menu_top">
+ <!--    <img src="/static/shouye/images/logo.png" class="logo"> -->
+    <img src="/static/shouye/images/back.png" class="back">
+        <img src="/static/shouye/images/logo.png" class="logo">
+</div>
+<!-- 轮播 -->
+<div class="js-silder">
+   <div class="silder-scroll">
+        <div class="silder-main">
+            <div class="silder-main-img">
+                <img src="/static/shouye/images/2-1.jpg" alt="">
+            </div>
+            <div class="silder-main-img">
+                <img src="/static/shouye/images/3-1.jpg" alt="">
+            </div>
+            <div class="silder-main-img">
+                <img src="/static/shouye/images/1-1.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 内容 -->
+<div class="user_content">
+    <div class="line"></div>
+    <div class="one_line" style="margin-top: 0px"> 
+        <div class="left_name">账号</div>
+        <div class="left_content">bbc</div>
+                <div class="right_content">用户ID</div>
+        <div class="right_name">123456</div>
+    </div>
+     <div class="one_line"> 
+        <div class="left_name">有机果WOC</div>
+        <div class="left_content">1000000</div>
+                <div class="right_content">会员等级</div>
+        <div class="right_name">VIP9</div>
+
+    </div>  
+     <div class="one_line"> 
+        <div class="left_name">信用种子</div>
+        <div class="left_content">1000000</div>
+                <div class="right_content">当前账户状态</div>
+         <div class="right_name">已激活</div>
+
+    </div>
+     <div class="one_line"> 
+        <div class="left_name">信用押金</div>
+        <div class="left_content">1000000</div>
+             <img src="/static/shouye/images/zp.png" class="zp" />
+        <div class="right_content">可用票数</div>
+        <div class="right_name">100</div>
+
+    </div>
+       <div class="line"></div>        
+</div>
+
+
+
+<p class="gg">公告</p>
+<div class="gg_bac">
+    <p class="gg_name">公告</p>
+    <p class="gg_time">2018-08-03 20:36:06</p>
+     <p class="gg_name">公告</p>
+    <p class="gg_time">2018-08-03 20:36:06</p>
+     <p class="gg_name">公告</p>
+    <p class="gg_time">2018-08-03 20:36:06</p>
+     <p class="gg_name">公告</p>
+    <p class="gg_time">2018-08-03 20:36:06</p>
+     <p class="gg_name">公告</p>
+    <p class="gg_time">2018-08-03 20:36:06</p>
+
+ </div>
+<div class="zw"></div>
+<!-- 底部 -->
+<div class="menu_bottom">
+    <a href="{:url('index/index')}"class="left_1"style="margin-top:0px"><img src="/static/shouye/images/index.png" class="left_1"></a>
+    <a href="{:url('tradingcenter/index')}"class="left_1"><img src="/static/shouye/images/jiaoyi.png" class="left_2"></a>
+
+    <a class="left_1"><img src="/static/shouye/images/tdgl.png" class="left_3"></a>
+    <a href="{:url('user/index')}"  class="left_1"><img src="/static/shouye/images/yhzx.png" class="left_4"></a>
+
+</div>
+
+<script src="/static/shouye/js/menu.js"></script> <!--控制js-->
+<script src="/static/shouye/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script src="/static/shouye/js/wySilder.min.js" type="text/javascript"></script>
+<script>
+    $(function (){
+        $(".js-silder").silder({
+            auto: true,//自动播放，传入任何可以转化为true的值都会自动轮播
+            speed: 20,//轮播图运动速度
+            sideCtrl: false,//是否需要侧边控制按钮
+            bottomCtrl: true,//是否需要底部控制按钮
+            defaultView: 0,//默认显示的索引
+            interval: 1000,//自动轮播的时间，以毫秒为单位，默认3000毫秒
+            activeClass: "active",//小的控制按钮激活的样式，不包括作用两边，默认active
+        });
+    });
+</script>
+</body>
+</html>

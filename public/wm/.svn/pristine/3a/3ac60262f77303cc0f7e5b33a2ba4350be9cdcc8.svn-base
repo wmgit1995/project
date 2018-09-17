@@ -1,0 +1,77 @@
+{include file="public/header"}
+
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>会员管理</cite></a>
+              <a><cite>会员列表</cite></a>
+            </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <xblock><span class="x-right" style="line-height:40px"></span></xblock>
+    <table class="layui-table">
+        <thead>
+        <tr>
+
+            <th>
+                会员ID
+            </th>
+            <th>
+                上级代理ID
+            </th>
+
+            <th>
+                投注期数
+            </th>
+            <th>
+                金额
+            </th>
+
+            <th>
+                投号
+            </th>
+            <th>
+                投注时间
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $data as $v }
+        <tr>
+
+            <td>
+                {$v['user_id']}
+            </td>
+
+            <td >
+                {$v['top_id']}
+            </td>
+            <td >
+                {$v['issue']}
+
+            </td>
+            <td >
+                {$v['user_coin']}
+            </td>
+            <td >
+                {$v['user_num']}
+            </td>
+            <td >
+                {neq name="$v['time']" value='0'}{:date("Y-m-d H:i",$v['time'])}{else/}{:date("Y-m-d H:i")}{/neq}
+            </td>
+
+
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+
+    <div id="page" style="text-align: center"> {$data->render()}</div>
+</div>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

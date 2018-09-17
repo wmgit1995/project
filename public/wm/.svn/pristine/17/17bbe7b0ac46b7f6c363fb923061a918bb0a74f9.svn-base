@@ -1,0 +1,388 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+p{
+  font-size: 1.7rem;
+}
+.huzhu-jilu,.hz-jilu1{
+    font-size: 2.25rem;
+    height:5rem;
+    line-height: 5rem;
+}
+.line-bottom{
+    border-bottom: 1px solid #CCC;
+}
+.zhanghao-label,.user-label,.youjiguo-label,.xinyong-label,.jihuo-label,.yajin-label,.piaoshu-label{
+    height:3rem;
+    line-height: 3rem;
+    font-size: 1.7rem;
+    margin-right: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.zhanghao-p,.jihuo-p,.yajin-p,.piaoshu-p{
+    min-width: 4rem;
+    margin-bottom: 0
+}
+.user-p,.youJiGuo-p{
+    margin-bottom: 0;
+    min-width: 7rem;
+}
+#yong{
+    margin-bottom: 0;
+    min-width: 7rem;
+}
+#zhanghao,#user-id,#huiyuan-level,#youjiguo,#xinyong,#jihuo,#zuigao,#xinyong-yajin,#jingtaibili,#tuanduirenshu,#piaoshu{
+    height:3rem;
+    line-height: 3rem;
+    font-size: 1.7rem;
+    border: 1px solid transparent;
+}
+#jingtaibili{
+    min-width: 60px;
+}
+.piaoshu-zhuan{
+    width: 100px;
+    height: 30px;
+}
+.yiwen{
+    width: 60px;
+    height: 30px;
+}
+.table-bordered>tbody>tr>td{
+    vertical-align: middle;
+}
+.zhuanchu,.jiaoyi-no{
+    color:red;
+}
+.zhuanru,.jiaoyi-yes{
+    color:green;
+}
+@media screen and (max-width: 736px) {.table-bordered>tbody>tr>td,
+.yajin-p,.jihuo-p,.piaoshu-p{
+    width:55px;
+    line-height:1.5rem;
+ }}
+@media screen and (max-width: 736px) {.table-bordered>tbody>tr>td{
+    padding-left: 0;
+    padding-right: 0;
+    width:30px;
+    line-height:1.5rem;
+}}
+@media screen and (max-width: 736px) {p{
+  font-size: 1.5rem;
+}}
+@media screen and (max-width: 736px) {.zhanghao-label,.user-label,.youjiguo-label,.xinyong-label,.jihuo-label,.yajin-label,.piaoshu-label,#zhanghao,#user-id,#huiyuan-level,#youjiguo,#xinyong,#jihuo,#zuigao,#xinyong-yajin,#jingtaibili,#tuanduirenshu,#piaoshu{
+  font-size: 1.38rem;
+}}
+@media screen and (max-width: 736px) {.tu1,.tu2{
+    width:120px;
+    line-height:1.5rem;
+}}
+@media screen and (max-width: 736px) {.tankuang1>img{
+    width:100px;
+    line-height:1.5rem;
+}}
+@media screen and (max-width: 736px) {.youjiguo-labe{
+    padding-left: 0;
+    padding-right: 0;
+    width:30px;
+    line-height:1.5rem;
+    border: 1px solid #000;
+}}
+@media screen and (max-width: 736px) {#yong{
+    min-width: 4rem;
+    /*line-height:1.5rem;*/
+}}
+@media screen and (max-width: 320px) {#yong{
+    min-width: 5rem;
+    /*line-height:1.5rem;*/
+}}
+@media screen and (max-width: 736px) {.user-p{
+    min-width: 4rem;
+    line-height:1.5rem;
+}}
+
+@media screen and (max-width: 736px) {.youJiGuo-p{
+    min-width: 5rem;
+    line-height:1.5rem;
+}}
+@media screen and (max-width: 736px) {#jingtaibili,.yiwen{
+    padding-left: 0;
+    padding-right: 0;
+}}
+@media screen and (max-width: 736px) {.piaoshu-zhuan{
+   width: 60px;
+}}
+
+@media screen and (max-width: 380px) {.piaoshu-zhuan{
+    width: 57px;
+}}
+@media screen and (max-width: 360px) {.piaoshu-zhuan{
+   width: 57px;
+}}
+@media screen and (max-width: 320px) {.piaoshu-zhuan{
+    width: 49px;
+}}
+@media screen and (max-width: 736px) {.yiwen{
+  padding-left: 0;
+    padding-right: 0;
+}}
+@media screen and (max-width: 736px) {#jingtaibili{
+    min-width: 39px;
+}}
+@media screen and (max-width: 736px) {.yiwen{
+   width: 26px;
+}}
+/*添加*/
+/*遮罩层样式*/
+#open {
+    /*显示菜单样式*/
+    width: 160px;
+    height: 100%;
+    /* background-color: #363a45; */
+    background: url(../img/blue.png) no-repeat;
+    padding-bottom: 0.1rem;
+    box-sizing: border-box;
+    /*margin-left: -2000px;*/
+    z-index: 9999999999999;
+    /*position: absolute;*/
+    -webkit-transition: all 0.8s ease;
+    -moz-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+    -ms-transition: all 0.8s ease;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.8);
+    z-index: 99999999;
+
+}
+#open .navH {
+    height: 45px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    box-sizing: border-box;
+    width: 239px;
+    background: url(../img/blue.png) no-repeat;
+}
+.navH span {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding: 0 5px;
+    cursor: pointer;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    display: inline-block;
+}
+.navH span .obscure {
+    width:50px;
+    height: 50px;
+    margin-left:18%;
+}
+.navBox {
+    height: 100%;
+    overflow-y: auto;
+    width: 198px;
+    background: url(../img/blue.png) no-repeat;
+
+}
+.navBox ul li {
+    /*  background-color: #393c4a;*/
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+.navBox ul li .obtain {
+    /*	background-color: #3889D4; */
+}
+.navBox ul li .obtain:hover {
+    /*	background-color: #3D8332; */
+}
+.obtain {
+    position: relative;
+    width: 90%;
+    height: 100%;
+    margin-left: 15px;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 0;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    -ms-transition: all 0.6s ease;
+    border-bottom: 1px solid;
+}
+.right {
+    position: absolute;
+    top: 50%;
+    right: 0.15rem;
+    border-top: 0.07rem transparent dashed;
+    /* border-left: 0.07rem solid #fff;*/
+    border-right: 0.07rem transparent dashed;
+    border-bottom: 0.07rem transparent dashed;
+    display: inline-block;
+    -webkit-transition: -webkit-transform 0.6s ease;
+    -moz-transition: -moz-transform 0.6s ease;
+    -o-transition: -o-transform 0.6s ease;
+    -ms-transition: -ms-transform 0.6s ease;
+    transform-origin: 4px 3px;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+.arrowRot {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.secondary {
+    overflow: hidden;
+    height: 0;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    -ms-transition: all 0.6s ease;
+}
+.secondary h3 {
+    padding: 0.1rem 0;
+    text-align: center;
+    font-size: 0.13rem;
+    background-color: #282c3a;
+    color: #ffffff;
+    border-bottom: 0.8px solid #42495d;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+}
+.navBox ul li .secondary h3:hover {
+    background-color: #1acbfc;
+}
+.navBox ul li .secondary .seconFocus {
+    background-color: #1acbfc;
+    -webkit-box-shadow: 3px 3px 3px #aa8c51;
+    -moz-box-shadow: 3px 3px 3px #aa8c51;
+    box-shadow: 3px 3px 3px #aa8c51;
+}
+/*遮罩层样式*/
+
+.right{
+    width: 22px;
+    float: right;
+    padding-top: 3px;
+}
+#zhezhao{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index:100000000000000;
+}
+.menu_logo{
+    margin-left: 57px;
+    width: 85px;
+}
+.VIP{
+    margin-left: 66px;
+    width: 35px;
+    float: left;
+}
+.vip{
+
+    padding: 3px;
+}
+.menu_num{
+    font-size: 41px;
+    height: 20px;
+    color: white;
+    margin-top: -9px;
+
+}
+.one{
+    height: 70px;
+    background-color: black;
+}
+/*添加*/
+.tan1{
+    width: 320px;
+    height: 160px;
+    text-align: center;
+    position: absolute;
+    top:200px;
+    margin:0 auto;
+    z-index: 1;
+    margin-left:40%;
+}
+.tan1-one{
+    width: 320px;
+    height:60px;
+    background: black;
+    border-radius: 15px 15px 0 0;
+}
+.tankuang1{
+    width: 320px;
+    height:100px;
+    background: #fff;
+    border-radius: 0 0 15px 15px ;
+    line-height: 100px
+}
+
+@media screen and (max-width: 320px) {.tan1{
+
+    margin-left: 0;
+}}
+@media screen and ( min-width:360px)and (max-width:375px)  {.tan1{
+
+    margin-left: 5%;
+}}
+@media screen and (min-width: 375px) and (max-width:736px){.tan1{
+
+    margin-left: 10%;
+}}
+.tan2{
+    width: 320px;
+    height: 200px;
+    text-align: center;
+    position: absolute;
+    top:200px;
+    margin:0 auto;
+    z-index: 1;
+    margin-left:40%;
+}
+.tan2-one{
+    width: 320px;
+    height:60px;
+    background: black;
+    border-radius: 15px 15px 0 0;
+}
+.tankuang2{
+    width: 320px;
+    height:140px;
+    background: #fff;
+    border-radius: 0 0 15px 15px ;
+   /* line-height: 100px*/
+}
+
+@media screen and (max-width: 320px) {.tan2{
+
+    margin-left: 0;
+}}
+@media screen and ( min-width:360px)and (max-width:375px)  {.tan2{
+
+    margin-left: 5%;
+}}
+@media screen and (min-width: 375px) and (max-width:736px){.tan2{
+
+    margin-left: 10%;
+}}

@@ -1,0 +1,100 @@
+<div style="background-color: #000;display: none" id="zhezhao" >
+    <div id="open" style=" min-width:87px; min-height:300px;">
+        <div class="navH">
+            <span><img class="obscure" src="__STATIC__/index/img/delete.png" alt=""></span>
+        </div>
+        <div class="navBox">
+            <ul>
+                <li>
+                    <img src="__STATIC__/index/img/logo.png" class="menu_logo"/>
+                </li>
+                <li>
+                    <h2 style="border-bottom:none; margin-left:45px;color: #fff">bbc</h2>
+                </li>
+                <li >
+                    <div class="vip">
+                        <img src="__STATIC__/index/img/VIP.png" class="VIP" />
+                        <p class='menu_num' >9</p>
+                    </div>
+                </li>
+              <li>
+                <a href="__STATIC__/index/__STATIC__/index/yonghuzhongxin/html/yonghuzhongxin.html">
+                  <h2 class="obtain">
+                    <img src="__STATIC__/index/img/zhanghu.png" alt="">
+                    &nbsp;
+                    &nbsp;
+                    账户总览
+                    <!-- <img src="__STATIC__/index/img/right.png" class="right"/>-->
+                  </h2>
+                </a>
+              </li>
+              <li>
+                <a href="__STATIC__/index/__STATIC__/index/chenshijun/basic_information/index.html">
+                  <h2 class="obtain">
+                    <img src="__STATIC__/index/img/geren.png" alt="">
+                    &nbsp;
+                    &nbsp;
+                    个人信息
+                    <!--  <img src="__STATIC__/index/img/right.png" class="right"/>-->
+                  </h2>
+                </a>
+              </li>
+              <li>
+                <a href="__STATIC__/index/__STATIC__/index/zq-huzhu/html/qiaobaodizhi-unband.html">
+                  <h2 class="obtain">
+                    <img src="__STATIC__/index/img/qianbao.png" alt="">
+                    &nbsp;
+                    &nbsp;
+                    钱包设置
+                    <!-- <img src="__STATIC__/index/img/right.png" class="right"/>-->
+                  </h2>
+                </a>
+              </li>
+              <li>
+                <a href="__STATIC__/index/__STATIC__/index/chenshijun/Team management/index.html">
+                  <h2 class="obtain">
+                    <img src="__STATIC__/index/img/yaoqing.png" alt="">
+                    &nbsp;
+                    &nbsp;
+                    我的邀请
+                    <!-- <img src="__STATIC__/index/img/right.png" class="right"/>-->
+                  </h2>
+                </a>
+              </li>
+              <li>
+                <a href="__STATIC__/index/__STATIC__/index/huzhuxitong/html/huzhuxitong.html">
+                  <h2 class="obtain">
+                    <img src="__STATIC__/index/img/huzhu.png" alt="">
+                    &nbsp;
+                    &nbsp;
+                    互助订单
+                    <!-- <img src="__STATIC__/index/img/right.png" class="right"/>-->
+                  </h2>
+                </a>
+              </li>
+              <li>
+                <a href="__STATIC__/index/__STATIC__/index/caiwuguanli/html/caiwuguanli.html">
+                  <h2 class="obtain">
+                    <img src="__STATIC__/index/img/caiwu.png" alt="">
+                    &nbsp;
+                    &nbsp;
+                    收益管理
+                    <!--  <img src="__STATIC__/index/img/right.png" class="right"/>-->
+                  </h2>
+                </a>
+              </li>
+              <li>
+                <a href="__STATIC__/index/__STATIC__/index/kefuzixun/html/kefu.html">
+                  <h2 class="obtain">
+                    <img src="__STATIC__/index/img/kefu.png" alt="">
+                    &nbsp;
+                    &nbsp;
+                    客服中心
+                    <!-- <img src="__STATIC__/index/img/right.png" class="right"/>-->
+                  </h2>
+                </a>
+              </li>
+            </ul>
+        </div>
+    </div>
+</div>

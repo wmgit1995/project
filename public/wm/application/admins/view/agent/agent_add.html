@@ -1,0 +1,110 @@
+{include file="public/header"}
+    <body>
+        <div class="x-body">
+          
+                <div class="layui-form-item">
+                    <label for="username" class="layui-form-label">
+                        <span class="x-red">*</span>代理姓名
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="username" name="username" required="" lay-verify="required"
+                        autocomplete="off" class="layui-input">
+                    </div>
+                    
+                </div>
+                <div class="layui-form-item">
+                    <label for="phone" class="layui-form-label">
+                        <span class="x-red">*</span>手机号
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="phone" name="phone" required="" lay-verify="phone"
+                        autocomplete="off" class="layui-input">
+                    </div>
+                  
+                </div>
+               
+                
+                <div class="layui-form-item">
+                    <label for="L_pass" class="layui-form-label">
+                        <span class="x-red">*</span>密码
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="password" id="L_pass" name="pass" required="" lay-verify="pass"
+                        autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        6到16个字符
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                        <span class="x-red">*</span>确认密码
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="password" id="L_repass" name="repass" required="" lay-verify="repass"
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                 <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                        <span class="x-red">*</span>反水基数
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="L_email" name="email" required="" lay-verify="email"
+                        autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="x-red">*</span>请输入合理反水基数，如比例为1%，则填1
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <button  class="layui-btn" id="submit" lay-filter="add" lay-submit="">
+                        增加代理
+                    </button>
+                </div>
+           
+        </div>
+        <script type="text/javascript">
+          $('#submit').click(function(){
+            var uname=$('#username').val();
+            var phone=$('#phone').val();
+            var pwd=$('#L_pass').val();
+            var rpwd=$('#L_repass').val();
+            var rate=$('#L_email').val();
+            var myreg = /^[1][3,4,5,6,7,8][0-9]{9}$/;
+
+            if(uname==""){
+              layer.msg('代理名不能为空', {icon: 2});
+            }else if(!myreg.test(phone)){
+                layer.msg('请输入正确的手机号', {icon: 2});
+            }else if(pwd=="" || rpwd==""){
+              layer.msg('密码不能为空', {icon: 2});
+            }else if(pwd!=rpwd){
+              layer.msg('两次密码不一致', {icon: 2});
+            }else if(rate==""){
+              layer.msg('反水基数不能为空', {icon: 2});
+            }else{
+                $.ajax({
+                    url:"{:url('agent_add')}",
+                    type:"post",
+                    data: {"uname":uname,"pwd":pwd,"phone":phone,"rate":rate},
+                    success:function(res){
+                        if(res=="ok"){
+                            // alert(222);
+                            layer.msg('添加成功', function(){
+                                location.href="/admins/agent/index";
+                            });
+                        }else{
+                            layer.msg('添加失败', {icon: 2});
+                        }
+                    }
+                })
+            }
+          })
+        </script>
+        
+    </body>
+
+</html>

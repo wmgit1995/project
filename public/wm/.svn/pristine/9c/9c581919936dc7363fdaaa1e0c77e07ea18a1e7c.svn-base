@@ -1,0 +1,106 @@
+
+
+{include file="public/header"}
+{include file="public/page"}
+<style>
+    .wd250{margin-bottom: 15px;width:300px;float: left}
+</style>
+<body>
+<div class="x-nav">
+
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <form class="layui-form x-center" action="index.html" style="width:800px" id="form2" method="get">
+        <div class="layui-form-pane" style="margin-top: 15px;">
+            <div class=" wd250">
+                <div class="layui-input-inline" style="text-align:right;padding-left:10%">
+                    <input type="text" name="title" id="name" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" value="{$data.title}">
+
+                </div>
+            </div>
+                <div class=" wd250">
+                    <label class="layui-form-label">货币类型</label>
+                <div class="layui-input-block">
+                    <select name="type">
+                        <option value="0" {eq name="data.type" value="0"}selected{/eq}>请选择</option>
+                        {volist name="type_lists" id ="vo"}
+                        <option value="{$key}" {eq name="data.type" value="$key"}selected{/eq}>{$vo}</option>
+                        {/volist}
+                    </select>
+                </div>
+                </div>
+                <div class="layui-input-inline wd250" style="width:80px">
+                    <button class="layui-btn"  id="search" lay-submit="" lay-filter="sreach"><i class="layui-icon"  >&#xe615;</i></button>
+                </div>
+            </div>
+
+    </form>
+
+
+
+    <table class="layui-table">
+        <thead>
+        <tr>
+
+            <th>
+                ID
+            </th>
+            <th>
+                用户名
+            </th>
+            <th>
+                货币类型
+            </th>
+            <th>
+                金额
+            </th>
+            <th>
+                变更后金额
+            </th>
+            <th>
+                货币来源
+            </th>
+            <th>
+                生成日期
+            </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $lists as $k=>$vo}
+        <tr>
+            <td>
+                {$vo['id']}
+            </td>
+            <td>
+                {$vo['user_nickname']}
+            </td>
+            <td>{$type_lists[$vo['type']]}</td>
+            <td>{eq name="vo.vector" value="1"}+{else/}-{/eq}{$vo['num']}</td>
+            <td>{$vo.nownum}</td>
+            <td>{$from_lists[$vo['from']]}</td>
+            <td>{:date("Y-m-d H:i",$vo['add_time'])}</td>
+
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    <div id="page" style="display:none"></div>
+    <div style="text-align:center;">{$lists->render()}</div>
+</div>
+
+
+{include file="public/footercom"}
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+
+        form.render();
+    });
+</script>
+
+
+
+</body>
+</html>

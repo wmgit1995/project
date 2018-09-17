@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title></title>
+<script src="__STATIC__/index/js/adapter.js"></script> <!--rem适配js-->
+<link rel="stylesheet" href="__STATIC__/index/css/base.css"> <!--初始化文件-->
+<link rel="stylesheet" href="__STATIC__/index/css/menu.css"> <!--主样式-->
+<link rel="stylesheet" href="__STATIC__/index/css/Untitled-1.css"> <!--总体-->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"><!--ie使用edge渲染模式-->
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+<meta name="renderer" content="webkit"><!--360渲染模式-->
+<meta name="format-detection" content="telephone=notelphone=no, email=no" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+ --><meta name="apple-touch-fullscreen" content="yes"><!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black"><!-- 设置苹果工具栏颜色:默认值为 default，可以定为 black和 black-translucent-->
+<meta http-equiv="Cache-Control" content="no-siteapp" /><!-- 不让百度转码 -->
+<meta name="HandheldFriendly" content="true"><!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+<meta name="MobileOptimized" content="320"><!-- 微软的老式浏览器 -->
+<meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+<meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+<meta name="browsermode" content="application"><!-- UC应用模式 -->
+<meta name="x5-page-mode" content="app"><!-- QQ应用模式 -->
+<meta name="msapplication-tap-highlight" content="no"><!-- windows phone 点击无高光 -->
+</head>
+<body>
+<div style="text-align:center;clear:both"></div>
+<div class="container">
+    <!--头部菜单-->
+    <div class="row one" style="min-width: 280px;margin-right: 0;margin-left: -15px;position: fixed;width: 100%;z-index: 99999999;">
+     
+      <div class="col-xs-4 text-left"><img src="__STATIC__/index/img/menu.png" alt="" id="gongneng" style="width: 30px;margin-top: 0.6rem;"></div>
+      
+      <div class="col-xs-4 text-center"><img src="__STATIC__/index/img/logo.png" alt="" style="width: 36px;margin-top: 0.5rem;margin-left: 0.9rem;"></div>
+
+      <div class="col-xs-4 text-right"><img src="__STATIC__/index/img/back.png" alt="" style="width: 30px;margin-top: 0.6rem;margin-left: 1.8rem;"></di
+    </div>
+        <!--遮罩层-->
+    <div style="background-color: #000;display: none" id="zhezhao" >
+        <div id="open" style=" min-width:87px; min-height:300px;">
+            <div class="navH">
+                <span><img class="obscure" src="__STATIC__/index/img/delete.png" alt=""></span>
+            </div>
+            <div class="navBox">
+                <ul>
+                    <li>
+                        <img src="__STATIC__/index/img/logo.png" class="menu_logo"/>
+                    </li>
+                    <li>
+                        <h2 style="border-bottom:none;margin-left:45px;color: #fff;position:relative;right: 94px;">bbc</h2>
+                    </li>
+                    <li >
+                        <div class="vip">
+                            <img src="__STATIC__/index/img/VIP.png" class="VIP" />
+                            <p class='menu_num' >9</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <img src="__STATIC__/index/img/zhanghu.png" alt="" style="position: relative;top: 26px;">
+                            <P style="margin-right: 62px;">账户总揽</P>
+                           
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <img src="__STATIC__/index/img/geren.png" alt="" style="position: relative;top: 26px;">
+                            <p style="margin-right: 62px;">个人信息</p>
+                            
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <img src="__STATIC__/index/img/qianbao.png" alt="" style="position: relative;top: 26px;">
+                            <p style="margin-right: 62px;">钱包设置</p>
+                            
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <img src="__STATIC__/index/img/yaoqing.png" alt="" style="position: relative;top: 26px;">
+                             <p style="margin-right: 62px;">我的邀请</p>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <img src="__STATIC__/index/img/huzhu.png" alt="" style="position: relative;top: 26px;">
+                            <p style="margin-right: 62px;">互助订单</p>
+                            
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <img src="__STATIC__/index/img/caiwu.png" alt="" style="position: relative;top: 26px;">
+                            <p style="margin-right: 62px;">收益管理</p>
+                           
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <img src="__STATIC__/index/img/kefu.png" alt="" style="position: relative;top: 26px;">
+                            <p style="margin-right: 62px;">客服中心</p>
+                            
+                        </h2>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--遮罩层-->
+</div>
+<script>
+    $("#gongneng").click(function () {
+        $("#zhezhao").css("display","block")
+    })
+    $(".navH").click(function () {
+        $("#zhezhao").css("display","none")
+    })
+</script>
+    <!--头部-->
+    
+<!-- 关于我们 -->  
+<div class="row">
+      <img src="__STATIC__/index/img/pic_01.png" class="img-responsive center-block" style="margin-top: 15%;">
+      <div class="col-xs-12" style="text-align: center;font-size: 0.6rem;">关于我们</div>
+     <div class="col-xs-4"><img src="__STATIC__/index/img/pic_02.jpg"></div>
+     <div class="col-xs-8"><p style="font-size: 0.4rem;text-indent: 0.3rem;">E国网络科技中心是经过云南省工商行政管理局核准的一家独资控股有限责任公司，2009年昆明市经济技术开发区招商引资高新科技类公司。</p>
+</div>
+     <div class="col-xs-12"><p style="font-size: 0.4rem;text-indent: 0.3rem;">E国网络科技中心主要管理和运营人员早在2000年就开始致力于互联网的持续研究，目前拥有各类专业技术人才四十余人，其中90%以上为本科以上学历，平均年龄29岁。完善的培训机制，丰富的从业经验，资深的IDC工程师队伍（思科CCNP)，能为用户提供7*24小时不间断服务。</p></div>
+    </div>
+    <!-- 关于我们 -->  
+   
+{include file="public/footers"}

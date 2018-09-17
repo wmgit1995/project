@@ -1,0 +1,247 @@
+{include file="public/header"}
+<style>
+    .wd150{width:150px;}
+    .infolf{text-align: left;width:400px;}
+</style>
+<body>
+<div class="x-body">
+    <div class="layui-form-item">
+        <label for="L_username" class="layui-form-label wd150">
+           排单信息
+        </label>
+        <label for="L_username" class="layui-form-label wd150">
+            金额:{$info.amount}
+        </label>
+         <label for="L_username" class="layui-form-label wd150">
+            状态:{$status_option[$info['status']]}
+         </label>
+        {egt name="info.status" value="1"}
+        <label for="L_username" class="layui-form-label wd150">
+            结算金额:{$info.sumnum}
+        </label>
+        {/egt}
+        {lt name="info.status" value="2"}
+        <label for="L_username" class="layui-form-label wd150">
+            {eq name="info.status" value="0"}已用{else/}已支付{/eq}金额:{$info.paynum|default=0}
+        </label>
+        <label for="L_username" class="layui-form-label wd150">
+        {eq name="info.status" value="0"}可用{else/}待支付{/eq}金额:{$info.overnum|default=0}
+        </label>
+        {/lt}
+    </div>
+
+        <form id="myform" class="layui-form" method="post">
+            {notempty name="lists"}
+            {volist name="lists" id="vo"}
+            <div class="layui-form-item">
+                <label for="L_username" class="layui-form-label infolf" >
+                    用户id:{$vo.user_id}|用户昵称:{$vo.user_nickname}|排单金额:{$vo.amount}
+                    |{eq name="info.status" value="1"}可用{else/}支付{/eq}金额:{$vo.overnum}
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="" name="name[{$vo.id}]"
+                           autocomplete="off" value="{$info.name|default=''}" class="layui-input" data="{$vo.overnum}">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+
+                </div>
+            </div>
+            {/volist}
+            <div class="layui-form-item">
+                <label for="L_repass" class="layui-form-label infolf error">
+                </label>
+                <input type="hidden" name="id" value="{$info.id|default=0}">
+                <button  class="layui-btn" lay-filter="save" lay-submit="">
+                    匹配
+                </button>
+            </div>
+        </form>
+    {else/}
+    <div >
+        暂无匹配数据
+    </div>
+    {/notempty}
+    {notempty name="order.to"}
+    <div >
+        付款信息
+    </div>
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                订单编号
+            </th>
+            <th>
+                收款人
+            </th>
+            <th>
+                金额
+            </th>
+            <th>
+                通知状态
+            </th>
+            <th>
+                订单状态
+            </th>
+            <th>
+                生成日期
+            </th>
+            <th>
+                支付日期
+            </th>
+        </tr>
+        </thead>
+        {volist name="order.to" id ="vol"}
+        <tr>
+
+            <td>
+                {$vol['id']}
+            </td>
+            <td>
+                {$vol['or_sn']}
+            </td>
+            <td >
+                {$vol['user_nickname']}
+            </td>
+
+            <td>{$vol['amount']}</td>
+            <td>{$msg_status_option[$vol['msg_status']]}</td>
+            <td>{$ostatus_option[$vol['status']]}</td>
+            <td>{:date("Y-m-d H:i",$vol['add_time'])}</td>
+            <td>{notempty name="vol['end_time']"}{$vol['end_time']|date='Y-m-d H:i',###}{else/}{$ostatus_option[$vol['status']]}{/notempty}</td>
+
+        </tr>
+        {/volist}
+        <tbody>
+        </tbody>
+    </table>
+    {/notempty}
+    {notempty name="order.from"}
+    <div >
+       收款信息
+    </div>
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                订单编号
+            </th>
+            <th>
+                付款人
+            </th>
+            <th>
+                金额
+            </th>
+            <th>
+                通知状态
+            </th>
+            <th>
+                订单状态
+            </th>
+            <th>
+                生成日期
+            </th>
+            <th>
+                支付日期
+            </th>
+        </tr>
+        </thead>
+        {volist name="order.from" id ="vol"}
+        <tr>
+
+            <td>
+                {$vol['id']}
+            </td>
+            <td>
+                {$vol['or_sn']}
+            </td>
+            <td >
+                {$vol['user_nickname']}
+            </td>
+
+            <td>{$vol['amount']}</td>
+            <td>{$msg_status_option[$vol['msg_status']]}</td>
+            <td>{$ostatus_option[$vol['status']]}</td>
+            <td>{:date("Y-m-d H:i",$vol['add_time'])}</td>
+            <td>{notempty name="vol['end_time']"}{$vol['end_time']|date='Y-m-d H:i',###}{else/}{$ostatus_option[$vol['status']]}{/notempty}</td>
+
+        </tr>
+        {/volist}
+        <tbody>
+        </tbody>
+    </table>
+{/notempty}
+</div>
+{include file="public/footercom"}
+{lt name="info.status" value="2"}
+<script>
+        var allnum = {$info.overnum};
+
+         var setnum = 0;
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form()
+            ,layer = layui.layer;
+
+        //文本框
+        $("input[type='text']").keyup(function() {
+            var num = Number($(this).val());
+            var maxnum = Number($(this).attr("data"));
+            if(num > maxnum){
+                $(this).val(maxnum);
+            }
+            var totalnum = 0 ;
+            $("input[type='text']").each(function(){
+                var val = Number($(this).val());//通过循环获取文本框的数据
+                totalnum+=val;
+            });
+            setnum = totalnum;
+            $(".error").html("预计金额:"+setnum);
+        });
+
+
+        form.on('submit(save)', function(data){
+            if(setnum==0){
+                $(".error").html("<font color='red'>金额为0不能匹配</font>");
+                return false;
+            }
+
+            if(allnum<setnum){
+                $(".error").html("<font color='red'>金额不能超过排单金额</font>");
+                return false;
+            }
+            //发异步，把数据提交给php
+            var formData = $("#myform").serialize();
+            // alert(formData)
+            $.ajax({
+                url:"{:url('Formation/match_save')}",
+                data:formData,
+                type:"post",
+                success:function(res){
+                    if(res.status==0){
+                        layer.msg(res.msg, {icon: 6,time:1000},function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            parent.layer.close(index);
+                            parent.location.reload();
+                        });
+                    }else if(res.status==1){
+                        layer.msg(res.msg,{icon:2});
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>
+{/lt}
+</body>
+
+</html>

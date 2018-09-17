@@ -1,0 +1,66 @@
+{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/lianxiwomen.css">
+    <style>
+        .row{
+            margin-right: 0;
+            margin-left: 0;
+        }
+        .col-xs-4{
+            padding-right: 8px;
+            padding-left: 4px;
+        }
+        a:hover{
+          text-decoration: none;
+        }
+    </style>
+<body>
+<div class="contain" style="height:542px;">
+    <!--头部-->
+    {include file="public/top_menu"}
+    <!--头部-->
+    <!--加空白-->
+    <div style=" height: 58px;width: 100%">
+    </div>
+    <!--加空白-->
+    <!--主图-->
+    <div class="row">
+        <div class="jiaoyi-kuang">
+        </div>
+    </div>
+    <!--主图-->
+    <!--间距-->
+    <div class="row" style="height:1.75rem ;"></div>
+    <!--间距-->
+    <!--下方图标-->
+    <!--第一个下方图标-->
+    <div class="row">
+        <div class="tigong-help col-xs-4 text-center">
+            <a href="{:url('consult_message')}" style="text-decoration: none" >
+            <img src="__STATIC__/index/img/zixun-liuyan.png" alt="" style="height: 7.6rem;width:7.6rem;">
+            <p class="word-1" style="color: black">咨询留言</p>
+            </a>
+        </div>
+        <div class="tigong-help col-xs-4 text-center">
+            <a href="{:url('consult_record')}" style="text-decoration: none">
+            <img src="__STATIC__/index/img/zixun-jilu.png" alt="" style="height: 7.6rem;width:7.6rem;">
+            <p class="word-1" style="color: black">咨询记录</p>
+            </a>
+        </div>
+        <div class="tigong-help col-xs-4 text-center">
+            <a href="{:url('custom_consult')}" style="text-decoration: none">
+            <img src="__STATIC__/index/img/kefu-zixun.png" alt="" style="height: 7.6rem;width:7.6rem;">
+            <p class="word-1" style="color: black">客服咨询</p>
+            </a>
+        </div>
+    </div>
+    <!--第一个下方图标-->
+    <!--下方图标-->
+    {include file="public/footers"}
+<script>
+    $("#gongneng").click(function () {
+        $("#zhezhao").css("display","block")
+    })
+    $(".navH").click(function () {
+        $("#zhezhao").css("display","none")
+    })
+</script>

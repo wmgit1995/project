@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>转票</title>
+<head>
+    <title>转票</title>
+    <!-- 设置文档编码 -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <!-- -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/zhuanpiao/c-css/zhuanpiao.css">
+    <!--<link rel="" href="/static/zhuanpiao/c-js/c-jinbi.js">-->
+    <!---->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- jQuery文件。务必在务必在bootstrap.min.js 之前引 之前引入 -->
+  <!--  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>-->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<!--xs  sm md  lg   -->
+<body style="background: rgb(240,240,240)">
+<div class="contain" style="min-width: 300px;height: 500px">
+    <!--头部-->
+        <div class="row one" style="min-width: 280px;margin-right: 0;margin-left: 0;position: fixed;top: 0;z-index: 1;width: 100%">
+            <div class="col-xs-4 text-left"  ><img src="/static/zhuanpiao/img/zhezhao.png" alt=""  style=" width: 50px;
+    height: 45px;margin-top: 1rem" id="gongneng"></div>
+           <div class="col-xs-4 text-center" ><img src="/static/zhuanpiao/img/logo.png" alt=""  style=" width: 50px;
+    height: 45px;margin-top: 1rem"></div>
+            <div class="col-xs-4 text-right" ><img src="/static/zhuanpiao/img/tuichu.png" alt=""  style=" width: 55px;
+    height: 45px;margin-top: 1rem"></div>
+        </div>
+    <!--头部-->
+    <div style="height: 70px"></div>
+        <form class="form-horizontal " id="regForm" method="post">
+            <div class="form-group " style="margin-right: 0;margin-left: 0; background: #fff">
+                <label class="col-sm-2 col-xs-2 control-label duifang"  style="text-align: left;min-width:100px;margin-top: 0;margin-bottom: 0;padding-top: 0;padding-bottom: 0;">
+                    对方ID
+                </label>
+                <div class="col-sm-10 col-xs-6">
+                    <input type="text" class="form-control"  placeholder="输入对方ID" required="true" >
+                </div>
+            </div>
+            <div class="form-group" style="margin-right: 0;margin-left: 0;background: #fff"><!--style="min-width:500px;"-->
+                <label class="col-sm-2 col-xs-2 control-label duifang"  style="text-align: left;min-width:100px;margin-top: 0;margin-bottom: 0;padding-top: 0;padding-bottom: 0;">
+                    对方账户名
+                </label>
+                <div class="col-sm-10 col-xs-6">
+                    <input type="text" class="form-control"  placeholder="输入对方账户名" required="true">
+                </div>
+            </div>
+<div class="row"><p style="margin-left: 2.8rem">输入对方ID或账户名，系统将自动获取对方账户名或ID</p></div>
+            <div class="form-group" style="margin-right: 0;margin-left: 0;background: #fff">
+                <label  class="col-sm-2  col-xs-2 control-label shuliang" style="text-align: left;min-width: 100px;margin-top: 0;margin-bottom: 0;padding-top: 0;padding-bottom: 0;">
+                    转送数量
+                </label>
+                <div class="col-sm-10 col-xs-6">
+                    <input type="text" class="form-control"  placeholder="输入转送数量" onkeyup= "if(!/^[+]{0,1}(\d+)$/.test(this.value)){placeholder=('只能输入正整数');this.value='';}" required="true">
+                </div>
+            </div>
+            <div class="form-group" style="margin-right: 0;margin-left: 0;background: #fff">
+                <label class="col-sm-2 col-xs-2 control-label jiaoyi" style="text-align: left;min-width: 100px;margin-top: 0;margin-bottom: 0;padding-top: 0;padding-bottom: 0;">
+                    交易密码
+                </label>
+                <div class="col-sm-10 col-xs-6">
+                    <input type="text" class="form-control"  placeholder="输入交易密码" required="true">
+                </div>
+            </div>
+          <div class="row text-center" style="margin-top: 2%;margin-right: 0;margin-left: 0">
+            <div class="col-sm-12 col-xs-12 foot text-center">
+              <input type="submit" class="text-center foot1"  value="转票" style="border-style: none;outline: none">
+            </div>
+          </div>
+        </form>
+
+    <!--底部-->
+  {include file="public/footer"}    <!--遮罩层-->
+</div>
+</body>
+</html>
+<script src="/static/zhuanpiao/c-js/huzhu.js"></script>
+<script>
+    $("#gongneng").click(function () {
+        $("#zhezhao").css("display","block")
+    })
+    $(".navH").click(function () {
+        $("#zhezhao").css("display","none")
+    })
+
+</script>
+<script type="text/javascript">
+  function check() {
+    var name = $("#goumai-liang");
+    var errStr = "";
+    // if (name.value == "" || name.value == null)
+    // {
+    //   /*errStr += "输入数量不能为空\n";*/
+    // }
+    if (errStr == "" || errStr == null)
+    {
+      return true;
+    }
+    alert(errStr);
+    return false;
+  }
+  document.getElementById("regForm").onsubmit = check;
+</script>

@@ -1,0 +1,79 @@
+{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/zhanghuguanli.css">
+<style>
+    .row{
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .col-xs-4{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    a:hover{
+      text-decoration: none;
+    }
+</style>
+
+<div class="contain" style="height:670px;">
+    <!--头部-->
+    {include file="public/top_menu"}
+    <!--头部-->
+    <!--加空白-->
+    <div style=" height: 58px;width: 100%">
+    </div>
+    <!--加空白-->
+    <!--固定导航栏-->
+    <!--<div class="row">
+        <div class="daohang-jiaoyi">
+        </div>
+    </div>-->
+    <!--固定导航栏-->
+    <!--主图-->
+    <div class="row">
+        <div class="jiaoyi-kuang">
+        </div>
+    </div>
+    <!--主图-->
+    <!--间距-->
+    <div class="row" style="height:1.75rem ;"></div>
+    <!--间距-->
+    <!--下方图标-->
+    <!--第一个下方图标-->
+    <div class="row">
+        <div class="tigong-help col-xs-4 text-center">
+            <a href="{:url('edit_paw')}" style="text-decoration: none">
+            <img src="__STATIC__/index/img/xiugai-mima.png" alt="" style="height: 7.6rem;width:7.6rem;">
+            <p class="word-1" style="color: black">修改密码</p>
+            </a>
+        </div>
+        <div class="tigong-help col-xs-4 text-center">
+            <a href="{:url('receipt')}" style="text-decoration: none">
+            <img src="__STATIC__/index/img/shoukuan.png" alt="" style="height: 7.6rem;width:7.6rem;">
+            <p class="word-1" style="color: black">收款信息</p>
+            </a>
+        </div>
+        <div class="tigong-help col-xs-4 text-center">
+            <a href="{:url('unbind_purse_addr')}" style="text-decoration: none">
+            <img src="__STATIC__/index/img/luse.png" alt="" style="height: 7.6rem;width:7.6rem;">
+            <p class="word-1" style="color: black">钱包地址</p>
+            </a>
+        </div>
+        <div class="tigong-help col-xs-4 text-center">
+            <a href="{:url('unbind_certificate')}" style="text-decoration: none">
+            <img src="__STATIC__/index/img/shiming.png" alt="" style="height: 7.6rem;width:7.6rem;">
+            <p class="word-1" style="color: black">实名认证</p>
+            </a>
+        </div>
+    </div>
+    <!--第一个下方图标-->
+    <!--下方图标-->
+    {include file="public/footers"}
+    
+<script>
+    $("#gongneng").click(function () {
+        $("#zhezhao").css("display","block")
+    })
+    $(".navH").click(function () {
+        $("#zhezhao").css("display","none")
+    })
+</script>

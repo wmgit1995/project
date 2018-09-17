@@ -1,0 +1,102 @@
+ {include file="public/header"}
+    
+    <body>
+        <div class="x-body">
+            <form id="myform" class="layui-form">
+                <input type="hidden" name="user_id" value="{$userinfo.user_id}" >
+                <div class="layui-form-item">
+                    <label for="username" class="layui-form-label">
+                        <span class="x-red">*</span>会员Id
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="id" disabled="" name="username" required="" lay-verify="required" value="{$userinfo['user_id']}" 
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="username" class="layui-form-label">
+                        <span class="x-red">*</span>账户
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="username" disabled="" name="username" required="" lay-verify="required" value="{$userinfo['name']}" 
+                        autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="x-red">*</span>将会成为您唯一的登入名
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="phone" class="layui-form-label">
+                        <span class="x-red">*</span>手机
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" disabled="" value="{$userinfo['mobile']}" name="phone" required="" 
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                        <span class="x-red">*</span>会员返水基数
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="number" id="rebate"  name="rebate" required=""  value="{$userinfo['rebate']}" 
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <button  class="layui-btn" lay-filter="save" lay-submit="">
+                        保存
+                    </button>
+                </div>
+            </form>
+        </div>
+{include file="public/footercom"}
+        <script>
+            layui.use(['form','layer'], function(){
+                $ = layui.jquery;
+              var form = layui.form()
+              ,layer = layui.layer;
+
+              //监听提交
+              form.on('submit(save)', function(data){
+                var uid=$("#id").val();
+                var rebate=$("#rebate").val();
+                console.log(data);
+                //发异步，把数据提交给php
+                var formData = $("#myform").serialize();
+                $.ajax({
+                    url:"{:url('User/member_edit')}",
+                    data:formData,
+                    type:"post",
+                    success:function(res){
+                        if(res=="ok"){
+                            layer.msg("保存成功", {icon: 6,time:1000},function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            parent.layer.close(index);
+                            parent.location.reload();
+                            });
+                        }else{
+                            layer.msg(res,{icon:2});
+                        }
+                    }
+                });
+                return false;
+              });
+            });
+        </script>
+        <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,56 @@
+{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/goumaiyoujiguo.css">
+<style>
+  a:hover{
+    text-decoration: none;
+  }
+</style>
+<!--xs  sm md  lg   -->
+<body style="background: rgb(240,240,240)">
+<div class="contain" style="min-width: 300px;height: 500px">
+    <!--头部-->
+    {include file="public/top_menu"}
+    <!--头部-->
+<div style="height: 70px"></div>
+        <form class="form-horizontal " id="regForm" method="post">
+            <div class="form-group " style="margin-right: 0;margin-left: 0; background: #fff;height: 3rem;line-height: 3rem">
+                <label class="col-sm-2 col-xs-2 control-label duifang"  style="text-align: left;min-width:100px;margin-top: 0;margin-bottom: 0;padding-top: 0;padding-bottom: 0;">
+                    购买项目
+                </label>
+                <div class="col-sm-10 col-xs-6" style=" height: 3rem;line-height: 3rem">
+                    有机果
+                </div>
+            </div>
+            <div class="form-group" style="margin-right: 0;margin-left: 0;background: #fff"><!--style="min-width:500px;"-->
+                <label class="col-sm-2 col-xs-2 control-label duifang"  style="text-align: left;min-width:100px;margin-top: 0;margin-bottom: 0;padding-top: 0;padding-bottom: 0;">
+                   账户ID
+                </label>
+                <div class="col-sm-10 col-xs-6">
+                    <p style="height: 2rem;line-height: 3rem">123456</p>
+                </div>
+            </div>
+            <div class="form-group" style="margin-right: 0;margin-left: 0;background: #fff">
+                <label  class="col-sm-2  col-xs-2 control-label shuliang" style="text-align: left;min-width: 100px;margin-top: 0;margin-bottom: 0;padding-top: 0;padding-bottom: 0;">
+                   购买数量
+                </label>
+                <div class="col-sm-10 col-xs-6">
+                    <!--<input type="text" class="form-control"  placeholder="输入购买数量" >-->
+                  <input type="text" class="form-control" id="goumai-liang"  placeholder="输入购买数量" onkeyup= "if(!/^[+]{0,1}(\d+)$/.test(this.value)){placeholder=('只能正整数');this.value='';}" required="true"/>
+                </div>
+            </div>
+            <div class="form-group" style="margin-right: 0;margin-left: 0;background: #fff">
+                <label class="col-sm-2 col-xs-2 control-label jiaoyi" style="text-align: left;min-width: 100px;margin-top: 0;margin-bottom: 0;padding-top: 0;padding-bottom: 0;">
+                    钱包地址
+                </label>
+                <div class="col-sm-10 col-xs-6">
+                   <p style="height: 2rem;line-height: 3rem">02346516546510324631361sdafaf</p>
+                </div>
+            </div>
+          <div class="row text-center" style="margin-top: 2%;margin-right: 0;margin-left: 0">
+            <div class="col-sm-12 col-xs-12 foot text-center">
+              <input type="submit" class="text-center foot1"  value="提交" style="border-style: none;outline: none">
+            </div>
+          </div>
+        </form>
+
+  {include file="public/footer"}

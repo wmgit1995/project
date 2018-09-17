@@ -1,0 +1,65 @@
+{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/kefu.css">
+
+    <style>
+        .row{
+            margin-right: 0;
+            margin-left: 0;
+        }
+        .col-xs-4{
+            padding-right: 8px;
+            padding-left: 4px;
+        }
+        @media screen and (max-width: 736px) {.word-1{
+           font-size: 24px;
+        }}
+      a:hover{
+        text-decoration: none;
+      }
+    </style>
+</head>
+<body>
+<div class="contain" style="height: 800px;">
+    <!--头部-->
+    {include file="public/top_menu"}
+    <!--头部-->
+    <!--加空白-->
+    <div style=" height: 58px;width: 100%">
+    </div>
+    <!--加空白-->
+    <!--主图-->
+    <div class="row">
+        <div class="jiaoyi-kuang">
+        </div>
+    </div>
+    <!--主图-->
+    <!--间距-->
+    <div class="row" style="height:1.75rem ;"></div>
+    <!--间距-->
+    <!--下方图标-->
+    <!--第一个下方图标-->
+    <div class="row">
+       <p style="font-weight: bold;font-size: 24px;text-indent: 2rem">如有需要，欢迎您通过微信和QQ与我们联系</p>
+
+    </div>
+    <div class="row">
+        <div class="tigong-help col-xs-6 text-center">
+            <img src="__STATIC__/index/img/jietu.png" alt="" style="height: 15.6rem;width:15.6rem;">
+            <p class="word-1" >QQ</p>
+        </div>
+        <div class="tigong-help col-xs-6 text-center">
+            <img src="__STATIC__/index/img/jietu.png" alt="" style="height: 15.6rem;width:15.6rem;">
+            <p class="word-1">微信</p>
+        </div>
+    </div>
+    <!--第一个下方图标-->
+    <!--下方图标-->
+    {include file="public/footers"}
+<script>
+    $("#gongneng").click(function () {
+        $("#zhezhao").css("display","block")
+    })
+    $(".navH").click(function () {
+        $("#zhezhao").css("display","none")
+    })
+</script>

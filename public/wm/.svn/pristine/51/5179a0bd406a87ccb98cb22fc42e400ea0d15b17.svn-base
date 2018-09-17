@@ -1,0 +1,47 @@
+{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/liuyanjuti.css">
+  <style>
+    a:hover{
+      text-decoration: none;
+    }
+  </style>
+<!--xs  sm md  lg   -->
+<body style="background: #cccccc" >
+<div class="contain" style="min-width: 300px">
+    <!--头部-->
+    {include file="public/top_menu"}
+    <!--头部-->
+    <div style="height: 70px"></div>
+    <!--<form class="form-horizontal " >-->
+    <div class="row" style="background: #fff">
+    <div class="row " style="margin-right: 0;margin-left: 0; ">
+        <div class="row " style="margin-right: 0;margin-left: 0; ">
+            <label class="col-sm-3 col-xs-3 control-label duifang"  style="color:red;text-align: left;min-width:160px;margin-top: 0;margin-bottom: 0;padding-top: 0;padding-bottom: 0;font-size: 26px">
+                咨询留言
+            </label>
+        </div>
+        <div  class="gonggao" >
+            <p class="col-xs-6 text-left gonggao1" style="font-size: 2.2rem;font-weight: bold">{$info.title}</p>
+            <span class="col-xs-6 text-right gonggao2"  style="font-size: 2rem;color: #cccccc">{$info.add_time|date="Y-m-d H:i:s",###}</span>
+        </div>
+    </div>
+    <div class="form-group" style="margin-right: 0;margin-left: 0;margin-top:2rem "><!--style="min-width:500px;"-->
+        <div class="row" style="margin-left: 0;margin-right: 0">
+            <div  class="juti" >
+                <p class="col-xs-12 text-left" style="font-size: 1.7rem">
+                <span class="row">{$info.content}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    {include file="public/footers"}
+<script src="__STATIC__/index/js/huzhu.js"></script>
+<script>
+    $("#gongneng").click(function () {
+        $("#zhezhao").css("display","block")
+    })
+    $(".navH").click(function () {
+        $("#zhezhao").css("display","none")
+    })
+</script>

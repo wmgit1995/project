@@ -1,0 +1,156 @@
+﻿{include file="public/head"}
+<style type="text/css">
+  @media screen and (max-width: 1080px)
+  #v_container {
+      cursor: pointer;
+      margin-left: -150px;
+      margin-top: -21px;
+      width: 332px;
+      height: 179px;
+  }
+@media screen and (max-width: 540px)
+#v_container {
+    cursor: pointer;
+    margin-left: -150px;
+    margin-top: -21px;
+    height: 178px;
+    height: 144px;
+}
+</style>
+<body>
+	<div class="htmleaf-container">
+		<div class="demo form-bg">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-md-offset-3 col-md-6">
+	                    <form class="form-horizontal" id="myform">
+	                    	<img src="__STATIC__/index/img/login.png"/>
+	                        <span class="heading">登陆</span>
+                          <p id="content" style="color: red;font-size: 20px;"><!-- 密码错误 --></p>
+	                        <div class="form-group">
+	                            <input type="email" name="user_login" class="form-control-user" id="inputEmail3" placeholder="用户名" class="user" value="" style="background-color: rgba(193, 182, 182, 0.2);">
+	                    
+	                        </div>
+	                        <div class="form-group">
+	                            <input type="email" name="user_pass" class="form-control-tel" id="inputEmail3" placeholder="密码" style="background-color: rgba(193, 182, 182, 0.2);">
+	                        
+	                        </div>
+	                        <div class="form-group yanzheng"  style="margin-left: 0">
+								<div  class="yz"  style="">
+										<input type="user_pass" name="captcha" class="form-control-yzm" id="inputuser_pass3" placeholder="验证码" style="background-color: rgba(193, 182, 182, 0.2);margin-left: 0">
+										<div id="v_container" class="can_container" style="">
+											<img id='captcha' src="{:url('login/verify')}?"+Math.random()" title="看不清，点击刷新"/>
+											<canvas id="verifyCanvas" width="100" height="40" style="cursor: pointer;">您的浏览器版本不支持canvas</canvas>
+										</div>
+								</div>
+	                        </div>
+	                        <!-- <div class="form-group">
+	                            <img id='captcha' src="{:url('login/verify')}?"+Math.random()" title="看不清，点击刷新"/>
+	                        
+	                        </div> -->
+
+	                              <div class="form-group">
+	                              
+											<div id="check" class="check"><input disabled="disabled" type="checkbox"class="input_check" id="check1" checked><label for="check1"></label></div>
+
+								
+                                <text  class="agree">同意服务条款</text>
+                                 <a href="{:url('login/register')}" ><text class="zhuce">注册</text></a>
+                                  <a href="{:url('login/find_mima')}" ><text class="forget">忘记密码</text></a>
+
+	                        </div>
+	                        <div class="form-group" style="margin-top: 40px">
+                                <a href='javascript:void(0)' onclick="return ajaxPost()" class="btn-green">登陆</a>
+	                        </div>
+	                  
+	                    </form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+		
+	</div>
+<script type="text/javascript"  src="js/yzm.js"></script>
+<script>
+      function ajaxPost(){
+          if(myform.user_login.value==''){
+              // document.getElementById("content").innerHTML = "请填写用户名！";
+              layer.msg('请填写用户名！', {icon: 5,time:1000});
+              myform.user_login.focus();
+              return false;
+          }
+          else if(myform.user_pass.value=='')
+          {
+              // document.getElementById("content").innerHTML = "请填写密码！";
+              layer.msg('请填写密码！', {icon: 5,time:1000});
+              myform.user_pass.focus();
+              return false;
+          }
+          else if(myform.captcha.value=='')
+          {
+              // document.getElementById("content").innerHTML = "请时输入验证码！";
+              layer.msg('请时输入验证码！', {icon: 5,time:1000});
+              myform.captcha.focus();
+              return false;
+          }
+          else
+          {
+              var formData = $("#myform").serialize();
+              //serialize() 方法通过序列化表单值，创建 URL 编码文本字符串,这个是jquery提供的方法
+              $.ajax({
+                  type:"post",
+                  url:"{:url('login/login')}",
+                  data:formData,//这里data传递过去的是序列化以后的字符串
+                  success:function(data){
+                      // alert(data);//JSON_ENCODE json字符串
+                      // var obj = JSON.parse(data);//json对象
+                      // var obj = eval('(' + data + ')');
+                      // alert(obj.msg);
+                      // alert(obj.status)
+                      // alert(obj);
+                      if(data.status==0){
+                          // $("#content").append(data);//获取成功以后输出返回值,会重复写入
+                          // document.getElementById("content").innerHTML = data.msg;
+                          layer.msg(data.msg, {icon: 5,time:1000});
+                          // location.href = location.href;
+                          setTimeout(function(){ location.href = location.href; }, 2000);
+                          myform.captcha.focus();
+                          return false;
+                      }else if(data.status==-1){
+                          // document.getElementById("content").innerHTML = '用户不存在！';
+                          layer.msg(data.msg, {icon: 5,time:2000});
+                          // location.href = window.location.href;
+                      }else if(data.status==-2){
+                          // document.getElementById("content").innerHTML = data.msg
+                          layer.msg(data.msg, {icon: 5,time:2000});
+                      }else if(data.status==-3){
+                          // document.getElementById("content").innerHTML = data.msg
+                          layer.msg(data.msg,{
+                              icon: 5,//背景
+                              time: 2000, //2s后自动关闭
+                          });
+                      }else if(data=='ok'){
+                          //闪跳
+                          // layer.msg('登录成功!', function(){
+                          //     location.href="{:url('/index/user/index')}";
+                          // });
+                           layer.msg("登录成功!", {icon: 6,time:1000},function () {
+                                location.href="{:url('/index/user/index')}";
+                           });
+                      }
+
+                  }
+              });
+          }
+
+      }
+
+
+
+      $("#captcha").click(function(event) {
+          this.src = "{:url('login/verify')}?"+Math.random();
+      });
+</script>
+</body>
+
+</html>

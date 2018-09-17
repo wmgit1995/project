@@ -1,0 +1,5 @@
+<div class="row one" style="min-width: 280px;margin-right: 0;margin-left: -15px;position: fixed;width: 100%;z-index: 99999999;">    
+<div class="col-xs-4 text-left"><img src="__STATIC__/index/img/menu.png" alt="" id="gongneng" style="width: 30px;margin-top: 0.6rem;"></div>
+<div class="col-xs-4 text-center"><img src="__STATIC__/index/img/logo.png" alt="" style="width: 36px;margin-top: 0.5rem;margin-left: 0.9rem;"></div>
+<div class="col-xs-4 text-right"><img src="__STATIC__/index/img/back.png" alt="" style="width: 30px;margin-top: 0.6rem;margin-left: 1.8rem;"></div>
+</div>

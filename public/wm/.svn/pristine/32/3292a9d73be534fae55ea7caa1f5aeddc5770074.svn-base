@@ -1,0 +1,128 @@
+{include file="public/header"}
+    <body>
+        <div class="x-body">
+            
+                
+              <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                        <span class="x-red">*</span>本期主图
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="file" id="File" onChange="preview(this)"/>
+                        <img src="{$pic}" id="imag" width="320px" height="180px"/>
+
+                    </div>
+                    
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <input type="hidden" value="{$list['pic_id']}" id="aid" name="">
+                    <button  class="layui-btn" id="submit" lay-filter="add" lay-submit="">
+                        确认添加
+                    </button>  
+                </div>
+          
+        </div>
+        <script type="text/javascript">
+            function preview(obj){
+                var img = document.getElementById("imag");
+                img.src = window.URL.createObjectURL(obj.files[0]);
+            }
+        </script>
+       <script>
+    $("#submit").click(function() {
+        var pid= $("#aid").val();
+        var fileObj = document.getElementById("File").files[0]; // js 获取文件对象
+        var formFile = new FormData();
+        formFile.append("action", "UploadVMKImagePath");
+        formFile.append("file", fileObj); //加入文件对象
+        formFile.append("pid", pid); //加入文件对象
+        var pic = formFile;
+        layer.msg('你确定要添加本期图片吗吗？',{
+                     time: 0 //不自动关闭,
+                     ,btn: ['确定', '取消']
+                     ,yes: function(index){
+                          layer.close(index);
+                          $.ajax({
+                            url:"{:url('pic_edit')}",
+                                type: "post",
+                                cache: false,//上传文件无需缓存
+                                processData: false,//用于对data参数进行序列化处理 这里必须false
+                                contentType: false, //必须
+                                data: pic,
+                                dataType: "json",
+                            success:function(res){
+                                if(res=="ok"){
+                                    layer.msg('添加成功', function(){
+                                        location.href="{:url('/pic/pic_edit')}";
+                                    });
+                                }else{
+                                    layer.msg('添加失败', {icon: 2});
+                                }
+                            }
+                        })
+                     }
+                })
+        // $.ajax({
+        //     url: "{:url('pic_edit')}",
+        //     type: "post",
+        //     cache: false,//上传文件无需缓存
+        //     processData: false,//用于对data参数进行序列化处理 这里必须false
+        //     contentType: false, //必须
+        //     data: pic,
+        //     dataType: "json",
+        //     success: function (res) {
+               
+        //         layer.msg(res.info, function () {
+        //             if (res.status == 1) {
+        //                 location.href = "{:url('pic_edit')}";
+        //             }
+        //         });
+        //     }
+        // });
+    });
+
+
+
+</script>
+       <!--  <script type="text/javascript">
+          $('#submit').click(function(){
+            var odds=$('#odds').val();
+            var rate=$('#L_email').val();
+            var id=$(this).parent().find("#aid").val();
+            // alert(rate);
+            if(rate==""){
+              layer.msg('开奖公告', {icon: 2});
+            }else if(odds==""){
+              layer.msg('开奖赔率', {icon: 2});
+            }else{
+                   layer.msg('你确定修改开奖赔率为'+odds+'吗？',{
+                     time: 0 //不自动关闭,
+                     ,btn: ['确定', '取消']
+                     ,yes: function(index){
+                          layer.close(index);
+                          $.ajax({
+                            url:"{:url('notice_edit')}",
+                            type:"post",
+                            data: {"rate":rate,"aid":id,"odds":odds},
+                            success:function(res){
+                                if(res=="ok"){
+                                    layer.msg('修改成功', function(){
+                                        location.href="{:url('/notice/notice_edit')}";
+                                    });
+                                }else{
+                                    layer.msg('修改失败', {icon: 2});
+                                }
+                            }
+                        })
+                     }
+                })
+
+            }
+          })
+        </script> -->
+        
+    </body>
+
+</html>

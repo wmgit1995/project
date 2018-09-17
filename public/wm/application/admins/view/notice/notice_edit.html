@@ -1,0 +1,73 @@
+{include file="public/header"}
+    <body>
+        <div class="x-body">
+
+                <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                        <span class="x-red">*</span>开奖赔率
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="odds" name="email" required="" lay-verify="email"
+                        autocomplete="off" class="layui-input" value="{$list['odds']}">
+                    </div>
+
+                </div>
+                 <div class="layui-form-item">
+                    <label for="L_email" class="layui-form-label">
+                        <span class="x-red">*</span>开奖公告
+                    </label>
+                    <div class="c">
+                      <textarea style="width:1000px;height;500px;" rows="9" cols="6" id="L_email" name="email" required="" lay-verify="email"
+                        autocomplete="off" class="layui-input" >{$list['notice']}</textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <input type="hidden" value="{$list['id']}" id="aid" name="">
+                    <button  class="layui-btn" id="submit" lay-filter="add" lay-submit="">
+                        确认修改
+                    </button>
+                </div>
+
+        </div>
+        <script type="text/javascript">
+          $('#submit').click(function(){
+            var odds=$('#odds').val();
+            var rate=$('#L_email').val();
+            var id=$(this).parent().find("#aid").val();
+            // alert(rate);
+            if(rate==""){
+              layer.msg('开奖公告', {icon: 2});
+            }else if(odds==""){
+              layer.msg('开奖赔率', {icon: 2});
+            }else{
+                   layer.msg('你确定修改开奖赔率为'+odds+'吗？',{
+                     time: 0 //不自动关闭,
+                     ,btn: ['确定', '取消']
+                     ,yes: function(index){
+                          layer.close(index);
+                          $.ajax({
+                            url:"{:url('notice_edit')}",
+                            type:"post",
+                            data: {"rate":rate,"aid":id,"odds":odds},
+                            success:function(res){
+                                if(res=="ok"){
+                                    layer.msg('修改成功', function(){
+                                        location.href="{:url('/notice/notice_edit')}";
+                                    });
+                                }else{
+                                    layer.msg('修改失败', {icon: 2});
+                                }
+                            }
+                        })
+                     }
+                })
+
+            }
+          })
+        </script>
+
+    </body>
+
+</html>

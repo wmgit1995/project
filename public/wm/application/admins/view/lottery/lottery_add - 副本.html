@@ -1,0 +1,99 @@
+{include file="public/header"}
+    <body>
+        <style type="text/css">
+        #sel_btn{
+            height: 21px;
+            line-height: 21px;
+            padding: 0 11px;
+            background: #02bafa;
+            border: 1px #26bbdb solid;
+            border-radius: 3px;
+            /*color: #fff;*/
+            display: inline-block;
+            text-decoration: none;
+            font-size: 16px;
+            outline: none;
+        } 
+        </style>
+        <div class="x-body">
+            <div style="padding-left:20%;padding-bottom:20px;">
+                 <p id='content'></p>
+            </div>
+
+            <div style="padding-left:20%;padding-bottom:20px;">
+                 <p id='content'>例如：24,43,45,25,42,13,46  用英文逗号隔开</p>
+            </div>
+            <form id="myform" class="layui-form" method="post">
+                <div class="layui-form-item">
+                    <label for="lottery_value" class="layui-form-label">
+                        <span class="x-red">*</span>开奖号码
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="lottery_value" name="lottery_value" required="" lay-verify="required"
+                        autocomplete="off" class="layui-input">
+                    </div>
+                    <p style="padding-top:10px;"><a id="sel_btn" onclick="getstr();" href="javascript:void(0)">随机生成号码 </a></p>
+
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <button onclick="return ajaxPost();" class="layui-btn" id="submit" lay-filter="add" lay-submit="">
+                        保存
+                    </button>
+                </div>
+            </form>
+
+        </div>
+          <script>
+                function ajaxPost(){
+                    if(myform.lottery_value.value==''){
+                        document.getElementById("content").innerHTML = "请填7位号码！";
+                        myform.lottery_value.focus();
+                        return false;
+                    }
+                    else
+                    {
+                        // var formData = $("#myform").serialize();
+                        var formData = $("#lottery_value").val();
+                        // alert(formData)
+                        //serialize() 方法通过序列化表单值，创建 URL 编码文本字符串,这个是jquery提供的方法
+                        $.ajax({
+                            type:"post",
+                            url:"{:url('lottery/lottery_add')}",
+                            data:{"lottery_value":formData},//这里data传递过去的是序列化以后的字符串
+                            success:function(data){
+                                if(data=='ok'){
+                                    layer.msg('添加成功!',{icon: 5,time:3000});
+                                    location.href="{:url('/lottery/index')}";
+                                }
+                            }
+                        });
+                    }
+
+                }
+
+
+
+            </script>
+            <script type="text/javascript">
+                function getstr(){
+                    
+                        $.ajax({
+                            type:"post",
+                            url:"{:url('lottery/getStr')}",
+                            data:{"demo":1},//这里data传递过去的是序列化以后的字符串
+                            success:function(data){
+                                // document.getElementById("#lottery_value").value(data);
+                                $("#lottery_value").attr("value",data);
+                            }
+                        });
+                }
+                // $("#sel_btn").click(function(){
+
+                // });
+            </script>
+
+    </body>
+
+</html>

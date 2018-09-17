@@ -1,0 +1,119 @@
+<div class="row" style="width:100%;min-width: 280px;margin-right: 0;margin-left: 0;background: black;height: 70px;position: fixed;bottom: 0;">
+        <div class="col-xs-3 text-center" onclick="javascript:window.location.href='{:url('index/index')}'"><img src="/static/jiaoyizhongxin/img/toubu/index.png"  style=" width: 40px;
+    height: 50px;margin-top: 1rem"></div>
+        <div class="col-xs-3 text-center" onclick="javascript:window.location.href='{:url('tradingcenter/index')}'"><img src="/static/jiaoyizhongxin/img/toubu/jiaoyi.png"  style=" width: 50px;
+    height: 50px;margin-top: 1rem"></div>
+        <div class="col-xs-3 text-center" onclick="javascript:window.location.href='{:url('tradingcenter/index')}'"><img src="/static/jiaoyizhongxin/img/toubu/tdgl.png" style=" width: 50px;
+    height: 50px;margin-top: 1rem"></div>
+        <div class="col-xs-3 text-center" onclick="javascript:window.location.href='{:url('user/index')}'"><img src="/static/jiaoyizhongxin/img/toubu/yhzx.png"  style=" width: 50px;
+    height: 50px;margin-top: 1rem"></div>
+    </div>
+    <!--底部-->
+    <!--遮罩层-->
+    <div style="background-color: #000;display: none" id="zhezhao" >
+        <div id="open" style=" min-width:87px; min-height:300px;">
+            <div class="navH">
+                <span><img class="obscure" style="width: 50px;height: 50px;margin-left: 22%;" src="/static/jiaoyizhongxin/img/toubu/delete.png" alt=""></span>
+            </div>
+            <div class="navBox">
+                <ul>
+                    <li>
+                        <img src="/static/jiaoyizhongxin/img/toubu/logo.png" class="menu_logo"/>
+                    </li>
+                    <li>
+                        <h2 style="border-bottom:none; margin-left:45px;color: #fff">bbc</h2>
+                    </li>
+                    <li >
+                        <div class="vip">
+                            <img src="/static/jiaoyizhongxin/img/toubu/VIP.png" class="VIP" />
+                            <p class='menu_num' >9</p>
+                        </div>
+                    </li>
+                  <li>
+                    <a href="/static/jiaoyizhongxin//static/jiaoyizhongxin/yonghuzhongxin/html/yonghuzhongxin.html">
+                      <h2 class="obtain">
+                        <img src="/static/jiaoyizhongxin/img/toubu/zhanghu.png" alt="">
+                        &nbsp;
+                        &nbsp;
+                        账户总揽
+                        <!--  <img src="/static/jiaoyizhongxin/img/toubu/right.png" class="right"/>-->
+                      </h2>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/static/jiaoyizhongxin//static/jiaoyizhongxin/chenshijun/Team%20management/index.html">
+                      <h2 class="obtain">
+                        <img src="/static/jiaoyizhongxin/img/toubu/geren.png" alt="">
+                        &nbsp;
+                        &nbsp;
+                        个人信息
+                        <!--   <img src="/static/jiaoyizhongxin/img/toubu/right.png" class="right"/>-->
+                      </h2>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/static/jiaoyizhongxin//static/jiaoyizhongxin/zq-huzhu/html/qiaobaodizhi-unband.html">
+                      <h2 class="obtain">
+                        <img src="/static/jiaoyizhongxin/img/toubu/qianbao.png" alt="">
+                        &nbsp;
+                        &nbsp;
+                        钱包设置
+                        <!--<img src="/static/jiaoyizhongxin/img/toubu/right.png" class="right"/>-->
+                      </h2>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/static/jiaoyizhongxin//static/jiaoyizhongxin/chenshijun/basic_information/index.html">
+                      <h2 class="obtain">
+                        <img src="/static/jiaoyizhongxin/img/toubu/yaoqing.png" alt="">
+                        &nbsp;
+                        &nbsp;
+                        我的邀请
+                        <!--<img src="/static/jiaoyizhongxin/img/toubu/right.png" class="right"/>-->
+                      </h2>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/static/jiaoyizhongxin//static/jiaoyizhongxin/huzhuxitong/html/huzhuxitong.html">
+                      <h2 class="obtain">
+                        <img src="/static/jiaoyizhongxin/img/toubu/huzhu.png" alt="">
+                        &nbsp;
+                        &nbsp;
+                        互助订单
+                        <!--<img src="/static/jiaoyizhongxin/img/toubu/right.png" class="right"/>-->
+                      </h2>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/static/jiaoyizhongxin//static/jiaoyizhongxin/caiwuguanli/html/caiwuguanli.html">
+                      <h2 class="obtain">
+                        <img src="/static/jiaoyizhongxin/img/toubu/caiwu.png" alt="">
+                        &nbsp;
+                        &nbsp;
+                        收益管理
+                        <!-- <img src="/static/jiaoyizhongxin/img/toubu/right.png" class="right"/>-->
+                      </h2>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/static/jiaoyizhongxin//static/jiaoyizhongxin/kefuzixun/html/kefu.html">
+                      <h2 class="obtain">
+                        <img src="/static/jiaoyizhongxin/img/toubu/kefu.png" alt="">
+                        &nbsp;
+                        &nbsp;
+                        客服中心
+                      </h2>
+                    </a>
+                  </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+    $("#gongneng").click(function () {
+        $("#zhezhao").css("display","block")
+    })
+    $(".navH").click(function () {
+        $("#zhezhao").css("display","none")
+    })
+</script>
